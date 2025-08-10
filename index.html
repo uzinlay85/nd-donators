@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap');
-        :root{--primary-color:#6a5acd;--secondary-color:#8a7dcf;--light-gray:#f8f9fa;--dark-gray:#4a5568;--morning-color:#d4a15b;--day-color:#4caf50;--danger-color:#e53e3e;--success-color:#28a745}*,*::before,*::after{box-sizing:border-box}body{font-family:'Padauk',sans-serif;background:linear-gradient(to bottom right,var(--primary-color),var(--secondary-color));color:#333;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;margin:0;padding:20px}.container{background-color:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);width:100%;max-width:900px;padding:24px}header{text-align:center;margin-bottom:24px}header h1{font-size:clamp(20px, 4vw, 24px);margin-bottom:8px;display:flex;justify-content:center;align-items:center;gap:15px}header p{font-size:14px;color:#666;margin-top:0}.donors-section h2{font-size:18px;margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:8px}.donor-cards{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px}.donor-card{background-color:var(--light-gray);border-radius:12px;padding:16px;flex:1 1 200px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s ease-in-out}.donor-card:hover{background-color:#e9ecef;transform:translateY(-3px);box-shadow:0 4px 10px rgba(0,0,0,.05)}.donor-card .icon{font-size:24px}.donor-card .icon.coffee{color:var(--morning-color)}.donor-card .icon.utensils{color:var(--day-color)}.donor-card-info h3{margin:0;font-size:16px}.donor-card-info p{margin:0;font-size:14px;color:#555}.no-donations{color:#777;font-style:italic;text-align:center;padding:10px;background:#fafafa;border-radius:8px}.calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.calendar-header h2{font-size:clamp(18px, 5vw, 22px);margin:0;color:var(--primary-color);font-weight:700}.nav-btn{background:#eef2f7;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;color:#555;display:grid;place-items:center;transition:background-color .2s}.nav-btn:hover{background-color:#dbe4f0}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background-color:#e0e0e0;border:1px solid #e0e0e0}.calendar-cell{background-color:#fff;padding:8px;text-align:right;min-height:100px;font-size:14px;position:relative;display:flex;flex-direction:column;transition:background-color .2s}.day-number{font-weight:700}.day-header{font-weight:700;text-align:center;padding:10px;background-color:var(--light-gray);min-height:auto;justify-content:center}.other-month{color:#aaa;background-color:#fdfdfd}.today .day-number{background-color:var(--primary-color);color:#fff;border-radius:50%;width:28px;height:28px;display:inline-flex;justify-content:center;align-items:center}.calendar-cell.admin-active:not(.other-month):hover{background-color:#eef2f7;cursor:pointer}.donations-container{margin-top:auto;display:flex;flex-direction:column;gap:4px}.donor-entry{font-size:12px;color:#fff;padding:4px 6px;border-radius:4px;text-align:center;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.donor-morning{background-color:var(--morning-color)}.donor-day{background-color:var(--day-color)}.footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-top:2px dashed #e0e0e0;padding-top:16px;margin-top:24px;gap:10px}.admin-btn,.action-btn{background-color:var(--dark-gray);color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:background-color .2s}.admin-btn:hover,.action-btn:hover{background-color:#333}.action-buttons{display:flex;flex-wrap:wrap;gap:8px}.action-btn.secondary{background-color:#f1f1f1;color:#333}.action-btn.secondary:hover{background-color:#e1e1e1}#admin-login-section{background-color:var(--light-gray);border-radius:12px;padding:20px;margin-top:16px;display:none}#admin-login-form{display:flex;gap:10px;align-items:center}#admin-password{flex-grow:1;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px}#login-btn{background-color:var(--success-color);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:14px}.admin-only{display:none}#import-file-input{display:none}.modal-backdrop{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:1000;animation:fadeIn .3s ease}.modal-content{background:#fff;padding:24px;border-radius:12px;width:90%;max-width:450px;box-shadow:0 5px 15px rgba(0,0,0,.3)}.modal-content h3{margin-top:0}.modal-content .form-group{margin-bottom:16px}.modal-content label{display:block;margin-bottom:6px;font-weight:700}.modal-content input,.modal-content select{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;flex-wrap:wrap}.modal-actions button{padding:10px 20px;border-radius:6px;border:none;cursor:pointer}#save-donor-btn{background-color:var(--success-color);color:#fff}#delete-donor-btn{background-color:var(--danger-color);color:#fff;display:none}.cancel-btn{background-color:#ccc}#search-form{display:flex;gap:8px;margin-bottom:16px}#search-input{flex-grow:1;padding:8px;border-radius:6px;border:1px solid #ccc}@keyframes fadeIn{from{opacity:0}to{opacity:1}}#donor-list-modal .modal-content,#search-results-modal .modal-content{max-height:80vh;overflow-y:auto}.results-table{width:100%;border-collapse:collapse;margin-top:16px}.results-table th,.results-table td{padding:10px;border:1px solid #ddd;text-align:left;font-size:14px}.results-table th{background-color:var(--light-gray)}#password-management-modal .form-group input{margin-bottom:8px}
+        :root{--primary-color:#6a5acd;--secondary-color:#8a7dcf;--light-gray:#f8f9fa;--dark-gray:#4a5568;--morning-color:#d4a15b;--day-color:#4caf50;--danger-color:#e53e3e;--success-color:#28a745}*,*::before,*::after{box-sizing:border-box}body{font-family:'Padauk',sans-serif;background:linear-gradient(to bottom right,var(--primary-color),var(--secondary-color));color:#333;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;margin:0;padding:20px}.container{background-color:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);width:100%;max-width:900px;padding:24px}header{text-align:center;margin-bottom:24px}header h1{font-size:clamp(20px, 4vw, 24px);margin-bottom:8px;display:flex;justify-content:center;align-items:center;gap:15px}header p{font-size:14px;color:#666;margin-top:0}.donors-section h2{font-size:18px;margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:8px}.donor-cards{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px}.donor-card{background-color:var(--light-gray);border-radius:12px;padding:16px;flex:1 1 200px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s ease-in-out}.donor-card:hover{background-color:#e9ecef;transform:translateY(-3px);box-shadow:0 4px 10px rgba(0,0,0,.05)}.donor-card .icon{font-size:24px}.donor-card .icon.coffee{color:var(--morning-color)}.donor-card .icon.utensils{color:var(--day-color)}.donor-card-info h3{margin:0;font-size:16px}.donor-card-info p{margin:0;font-size:14px;color:#555}.no-donations{color:#777;font-style:italic;text-align:center;padding:10px;background:#fafafa;border-radius:8px}.calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.calendar-header h2{font-size:clamp(18px, 5vw, 22px);margin:0;color:var(--primary-color);font-weight:700}.nav-btn{background:#eef2f7;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;color:#555;display:grid;place-items:center;transition:background-color .2s}.nav-btn:hover{background-color:#dbe4f0}.calendar-header .today-btn{padding:6px 12px;border-radius:8px;font-size:14px;height:auto;width:auto;background:#eef2f7;border:1px solid #ddd;cursor:pointer}.calendar-header .today-btn:hover{background-color:#dbe4f0}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background-color:#e0e0e0;border:1px solid #e0e0e0}.calendar-cell{background-color:#fff;padding:8px;text-align:right;min-height:100px;font-size:14px;position:relative;display:flex;flex-direction:column;transition:background-color .2s}.day-number{font-weight:700}.day-header{font-weight:700;text-align:center;padding:10px;background-color:var(--light-gray);min-height:auto;justify-content:center}.other-month{color:#aaa;background-color:#fdfdfd}.today .day-number{background-color:var(--primary-color);color:#fff;border-radius:50%;width:28px;height:28px;display:inline-flex;justify-content:center;align-items:center}.calendar-cell.admin-active:not(.other-month):hover{background-color:#eef2f7;cursor:pointer}.donations-container{margin-top:auto;display:flex;flex-direction:column;gap:4px}.donor-entry{font-size:12px;color:#fff;padding:4px 6px;border-radius:4px;text-align:center;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.donor-morning{background-color:var(--morning-color)}.donor-day{background-color:var(--day-color)}.footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-top:2px dashed #e0e0e0;padding-top:16px;margin-top:24px;gap:10px}.admin-btn,.action-btn{background-color:var(--dark-gray);color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:background-color .2s}.admin-btn:hover,.action-btn:hover{background-color:#333}.action-buttons{display:flex;flex-wrap:wrap;gap:8px}.action-btn.secondary{background-color:#f1f1f1;color:#333}.action-btn.secondary:hover{background-color:#e1e1e1}.admin-only{display:none}#import-file-input{display:none}.modal-backdrop{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:1000;animation:fadeIn .3s ease}.modal-content{background:#fff;padding:24px;border-radius:12px;width:90%;max-width:450px;box-shadow:0 5px 15px rgba(0,0,0,.3)}.modal-content h3{margin-top:0}.modal-content .form-group{margin-bottom:16px}.modal-content label{display:block;margin-bottom:6px;font-weight:700}.modal-content input,.modal-content select{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;flex-wrap:wrap}.modal-actions button{padding:10px 20px;border-radius:6px;border:none;cursor:pointer}#save-donor-btn{background-color:var(--success-color);color:#fff}#delete-donor-btn{background-color:var(--danger-color);color:#fff;display:none}.cancel-btn{background-color:#ccc}#search-form{display:flex;gap:8px;margin-bottom:16px}#search-input{flex-grow:1;padding:8px;border-radius:6px;border:1px solid #ccc}@keyframes fadeIn{from{opacity:0}to{opacity:1}}#donor-list-modal .modal-content,#search-results-modal .modal-content{max-height:80vh;overflow-y:auto}.results-table{width:100%;border-collapse:collapse;margin-top:16px}.results-table th,.results-table td{padding:10px;border:1px solid #ddd;text-align:left;font-size:14px}.results-table th{background-color:var(--light-gray)}#login-modal .form-group{margin-bottom:12px}
     </style>
 </head>
 <body>
-
+    <div id="loading-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.8);z-index:9999;display:flex;justify-content:center;align-items:center;"><p>Loading...</p></div>
     <div class="container">
         <header>
             <h1>
-                <img src="logo.jpg" alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
+                <img src="logo.jpg" alt="Logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
                 <span>ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် - ဆွမ်းအလှူရှင်စာရင်း</span>
-                <img src="logo.jpg" alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
+                <img src="logo.jpg" alt="Logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
             </h1>
             <p>ရန်ကုန်၊ ဗဟန်း၊ ကြားတောရရပ်ကွက်၊ ရေတာရှည်လမ်းဟောင်း။</p>
         </header>
@@ -32,7 +32,12 @@
                 <p class="no-donations">ယခုလအတွက် အလှူရှင် မရှိသေးပါ။</p>
             </section>
             <section class="calendar-container">
-                <div class="calendar-header"><button id="prev-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button><h2 id="month-year-header"></h2><button id="next-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button></div>
+                <div class="calendar-header">
+                    <button id="prev-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button id="today-btn" class="today-btn">ယနေ့</button>
+                    <h2 id="month-year-header"></h2>
+                    <button id="next-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
                 <div class="calendar-grid" id="calendar-grid"></div>
             </section>
         </main>
@@ -45,131 +50,106 @@
             </div>
             <div id="admin-action-buttons" class="action-buttons admin-only">
                 <button id="search-donor-btn" class="action-btn secondary"><i class="fa-solid fa-search"></i> ရှာရန်</button>
-                <button id="manage-passwords-btn" class="action-btn secondary"><i class="fa-solid fa-key"></i> Password များစီမံရန်</button>
                 <button id="export-btn" class="action-btn secondary"><i class="fa-solid fa-download"></i> Export</button>
                 <button id="import-btn" class="action-btn secondary"><i class="fa-solid fa-upload"></i> Import</button>
                 <input type="file" id="import-file-input" accept=".json">
             </div>
         </footer>
-        
-        <section id="admin-login-section"><form id="admin-login-form"><input type="password" id="admin-password" placeholder="Super Admin or Admin Password" required><button type="submit" id="login-btn">Login</button></form></section>
     </div>
 
+    <!-- Modals -->
+    <div id="login-modal" class="modal-backdrop"><div class="modal-content"><h3>Admin Login</h3><form id="login-form"><div class="form-group"><label for="email">Email</label><input type="email" id="email" required></div><div class="form-group"><label for="password">Password</label><input type="password" id="password" required></div><div class="modal-actions"><button type="button" class="cancel-btn">မလုပ်တော့ပါ</button><button type="submit">Login</button></div></form></div></div>
     <div id="add-choice-modal" class="modal-backdrop"><div class="modal-content"><h3>အလှူရှင်အသစ်ထည့်ရန်</h3><div class="modal-actions" style="flex-direction: column;"><button id="add-morning-btn">အရုဏ်ဆွမ်း အလှူရှင်</button><button id="add-day-btn">နေ့ဆွမ်း အလှူရှင်</button><button class="cancel-btn">မလုပ်တော့ပါ</button></div></div></div>
     <div id="donor-modal" class="modal-backdrop"><div class="modal-content"><h3 id="modal-title">အလှူရှင် အချက်အလက်</h3><form id="donor-form"><input type="hidden" id="donor-date-key"><input type="hidden" id="donation-type-hidden"><div class="form-group"><label for="donor-name">အလှူရှင်အမည်</label><input type="text" id="donor-name" required></div><div class="form-group"><label for="donor-address">လိပ်စာ</label><input type="text" id="donor-address"></div><div class="form-group"><label for="donor-phone">ဖုန်းနံပါတ်</label><input type="text" id="donor-phone"></div><div class="modal-actions"><button type="button" id="delete-donor-btn">ဖျက်မည်</button><button type="button" class="cancel-btn">မလုပ်တော့ပါ</button><button type="submit" id="save-donor-btn">သိမ်းမည်</button></div></form></div></div>
     <div id="donor-list-modal" class="modal-backdrop"><div class="modal-content"><h3 id="donor-list-title">အလှူရှင်များ စာရင်း</h3><div id="donor-list-content"></div><div class="modal-actions"><button class="cancel-btn">ပိတ်မည်</button></div></div></div>
     <div id="search-results-modal" class="modal-backdrop"><div class="modal-content"><h3>အလှူရှင် ရှာဖွေရန်</h3><form id="search-form"><input type="search" id="search-input" placeholder="အမည်ဖြင့် ရှာရန်..."><button type="submit" class="action-btn"><i class="fa-solid fa-search"></i></button></form><div id="search-results-content"></div><div class="modal-actions"><button class="cancel-btn">ပိတ်မည်</button></div></div></div>
-    
-    <div id="password-management-modal" class="modal-backdrop">
-        <div class="modal-content">
-            <h3>Password များစီမံရန်</h3>
-            <form id="password-management-form">
-                <div class="form-group" id="superadmin-password-group">
-                    <label for="superadmin-password-input">Super Admin Password အသစ်</label>
-                    <input type="password" id="superadmin-password-input" placeholder="အနည်းဆုံး ၆လုံး">
-                    <button type="button" class="action-btn" data-role="superadmin">Super Admin Pass ပြောင်းမည်</button>
-                </div>
-                <hr style="margin: 20px 0;">
-                <div class="form-group" id="admin-password-group">
-                    <label for="admin-password-input">Admin Password အသစ်</label>
-                    <input type="password" id="admin-password-input" placeholder="အနည်းဆုံး ၆လုံး">
-                    <button type="button" class="action-btn" data-role="admin">Admin Pass ပြောင်းမည်</button>
-                </div>
-            </form>
-            <div class="modal-actions">
-                <button class="cancel-btn">ပိတ်မည်</button>
-            </div>
-        </div>
-    </div>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCv8Q-q7H1O7BhEZVX8AVfFO_Fj2jsD0HE",
+        authDomain: "nd-donors.firebaseapp.com",
+        projectId: "nd-donors",
+        storageBucket: "nd-donors.firebasestorage.app",
+        messagingSenderId: "41926036098",
+        appId: "1:41926036098:web:1282ab75b6241a10d8c29b"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
     document.addEventListener('DOMContentLoaded', () => {
         const App = {
-            // --- STATE ---
             viewDate: new Date(),
             donations: {},
-            passwords: {},
-            currentUserRole: null, // null, 'admin', or 'superadmin'
-
-            // --- DOM Elements ---
+            isLoggedIn: false,
             elements: {
+                loadingOverlay: document.getElementById('loading-overlay'),
                 adminLoginBtn: document.getElementById('admin-login-btn'),
                 logoutBtn: document.getElementById('logout-btn'),
-                adminLoginSection: document.getElementById('admin-login-section'),
-                adminLoginForm: document.getElementById('admin-login-form'),
                 adminActionButtons: document.getElementById('admin-action-buttons'),
                 calendarGrid: document.getElementById('calendar-grid'),
                 monthYearHeader: document.getElementById('month-year-header'),
                 prevMonthBtn: document.getElementById('prev-month-btn'),
                 nextMonthBtn: document.getElementById('next-month-btn'),
+                todayBtn: document.getElementById('today-btn'),
                 userStatus: document.getElementById('user-status'),
-                
-                // Admin Buttons
-                managePasswordsBtn: document.getElementById('manage-passwords-btn'),
+                searchDonorBtn: document.getElementById('search-donor-btn'),
                 exportBtn: document.getElementById('export-btn'),
                 importBtn: document.getElementById('import-btn'),
                 importFileInput: document.getElementById('import-file-input'),
-                searchDonorBtn: document.getElementById('search-donor-btn'),
-
-                // Modals
                 modals: document.querySelectorAll('.modal-backdrop'),
+                loginModal: document.getElementById('login-modal'),
+                loginForm: document.getElementById('login-form'),
                 addChoiceModal: document.getElementById('add-choice-modal'),
                 donorModal: document.getElementById('donor-modal'),
-                donorListModal: document.getElementById('donor-list-modal'),
-                searchResultsModal: document.getElementById('search-results-modal'),
-                passwordManagementModal: document.getElementById('password-management-modal'),
-                
-                // Password Modal Elements
-                passwordManagementForm: document.getElementById('password-management-form'),
-                superAdminPassGroup: document.getElementById('superadmin-password-group'),
-                adminPassGroup: document.getElementById('admin-password-group'),
+                donorForm: document.getElementById('donor-form'),
+                deleteDonorBtn: document.getElementById('delete-donor-btn'),
             },
 
-            // --- INITIALIZATION ---
             init() {
-                this.loadData();
                 this.addEventListeners();
-                this.renderCalendar();
-                this.updateUIForLoginState();
+                this.listenForAuthStateChanges();
+                this.listenForDonations();
             },
 
-            // --- DATA HANDLING ---
-            loadData() {
-                this.donations = JSON.parse(localStorage.getItem('donations_data_v3')) || {};
-                const storedPasswords = JSON.parse(localStorage.getItem('app_passwords_v4'));
-                this.passwords = storedPasswords || {
-                    superadmin: 'super123',
-                    admin: 'admin123'
-                };
-                this.savePasswords(); // Save defaults if not present
-            },
-            savePasswords() {
-                localStorage.setItem('app_passwords_v4', JSON.stringify(this.passwords));
-            },
-            saveAndRerender() {
-                localStorage.setItem('donations_data_v3', JSON.stringify(this.donations));
-                this.renderCalendar();
-                this.updateUIForLoginState();
+            listenForAuthStateChanges() {
+                auth.onAuthStateChanged(user => {
+                    this.isLoggedIn = !!user;
+                    this.updateUIForLoginState();
+                    this.renderCalendar();
+                });
             },
 
-            // --- EVENT LISTENERS ---
+            listenForDonations() {
+                this.elements.loadingOverlay.style.display = 'flex';
+                db.collection('donations').onSnapshot(snapshot => {
+                    this.donations = {};
+                    snapshot.forEach(doc => {
+                        this.donations[doc.id] = doc.data();
+                    });
+                    this.renderCalendar();
+                    this.elements.loadingOverlay.style.display = 'none';
+                }, error => {
+                    console.error("Error listening for donations: ", error);
+                    alert("Database နှင့် ချိတ်ဆက်၍မရပါ၊ သင်၏ Firebase Config မှန်ကန်မှုရှိမရှိ စစ်ဆေးပါ။");
+                    this.elements.loadingOverlay.style.display = 'none';
+                });
+            },
+
             addEventListeners() {
                 const els = this.elements;
                 els.prevMonthBtn.addEventListener('click', () => this.changeMonth(-1));
                 els.nextMonthBtn.addEventListener('click', () => this.changeMonth(1));
-                
-                els.adminLoginBtn.addEventListener('click', () => this.toggleLoginSection());
-                els.logoutBtn.addEventListener('click', () => this.handleLogout());
-                els.adminLoginForm.addEventListener('submit', (e) => this.handleLogin(e));
-                
-                els.managePasswordsBtn.addEventListener('click', () => this.openPasswordManagementModal());
-                els.passwordManagementForm.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'BUTTON' && e.target.dataset.role) {
-                        this.handleChangePassword(e.target.dataset.role);
-                    }
-                });
-
+                els.todayBtn.addEventListener('click', () => this.goToToday());
+                els.adminLoginBtn.addEventListener('click', () => this.openModal('login-modal'));
+                els.logoutBtn.addEventListener('click', () => auth.signOut());
+                els.loginForm.addEventListener('submit', (e) => this.handleLogin(e));
                 els.calendarGrid.addEventListener('click', (e) => this.handleCellClick(e));
                 
                 els.modals.forEach(modal => {
@@ -179,113 +159,118 @@
                         }
                     });
                 });
-                
+
                 document.getElementById('add-morning-btn').addEventListener('click', () => this.openDonorModal('morning'));
                 document.getElementById('add-day-btn').addEventListener('click', () => this.openDonorModal('day'));
-                document.getElementById('donor-form').addEventListener('submit', (e) => this.handleSaveDonor(e));
-                document.getElementById('delete-donor-btn').addEventListener('click', () => this.handleDeleteDonor());
+                els.donorForm.addEventListener('submit', (e) => this.handleSaveDonor(e));
+                els.deleteDonorBtn.addEventListener('click', () => this.handleDeleteDonor());
 
                 document.getElementById('morning-donor-card').addEventListener('click', () => this.showDonorListModal('morning'));
                 document.getElementById('day-donor-card').addEventListener('click', () => this.showDonorListModal('day'));
+                els.searchDonorBtn.addEventListener('click', () => this.openModal('search-results-modal'));
+                document.getElementById('search-form').addEventListener('submit', (e) => this.handleSearch(e));
 
                 els.exportBtn.addEventListener('click', () => this.exportData());
                 els.importBtn.addEventListener('click', () => els.importFileInput.click());
                 els.importFileInput.addEventListener('change', (e) => this.importData(e));
-                els.searchDonorBtn.addEventListener('click', () => this.openSearchModal());
-                document.getElementById('search-form').addEventListener('submit', (e) => this.handleSearch(e));
+            },
+            
+            goToToday() {
+                this.viewDate = new Date();
+                this.renderCalendar();
             },
 
-            // --- UI & STATE MANAGEMENT ---
-            updateUIForLoginState() {
-                const { adminLoginBtn, logoutBtn, adminActionButtons, userStatus } = this.elements;
-                const isLoggedIn = this.currentUserRole !== null;
-                
-                adminLoginBtn.style.display = isLoggedIn ? 'none' : 'inline-flex';
-                logoutBtn.style.display = isLoggedIn ? 'inline-flex' : 'none';
-                adminActionButtons.style.display = isLoggedIn ? 'flex' : 'none';
-
-                if (isLoggedIn) {
-                    const roleText = this.currentUserRole === 'superadmin' ? 'Super Admin' : 'Admin';
-                    userStatus.innerHTML = `<span style="font-size: 14px; color: #333;">Login အဖြစ်: <strong>${roleText}</strong></span>`;
-                    this.elements.managePasswordsBtn.style.display = 'inline-flex';
-                } else {
-                    userStatus.innerHTML = '';
-                }
-
-                document.querySelectorAll('.calendar-cell:not(.other-month)').forEach(cell => {
-                    cell.classList.toggle('admin-active', isLoggedIn);
+            exportData() {
+                db.collection('donations').get().then(snapshot => {
+                    if (snapshot.empty) {
+                        alert('Export လုပ်ရန် ဒေတာ မရှိသေးပါ။');
+                        return;
+                    }
+                    const allDonations = {};
+                    snapshot.forEach(doc => {
+                        allDonations[doc.id] = doc.data();
+                    });
+                    const dataStr = JSON.stringify(allDonations, null, 2);
+                    const blob = new Blob([dataStr], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `donations_backup_${new Date().toISOString().slice(0, 10)}.json`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    alert('Data Export လုပ်ခြင်း အောင်မြင်ပါသည်။');
+                }).catch(err => {
+                    console.error("Error exporting data: ", err);
+                    alert("Data export လုပ်ရာတွင် အမှားအယွင်း ဖြစ်ပွားပါသည်။");
                 });
             },
-            
-            toggleLoginSection() {
-                const section = this.elements.adminLoginSection;
-                section.style.display = section.style.display === 'block' ? 'none' : 'block';
+
+            importData(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                if (!confirm("သတိပြုရန်!\n\nImport လုပ်လိုက်ပါက Database ထဲက data အားလုံး ပျက်သွားပြီး၊ သင်ရွေးချယ်လိုက်သော ဖိုင်ထဲက data များဖြင့် အစားထိုးသွားပါမည်။\n\nဆက်လုပ်ရန် သေချာပါသလား?")) {
+                    event.target.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        const batch = db.batch();
+
+                        // Step 1: Delete all existing documents
+                        db.collection('donations').get().then(snapshot => {
+                            snapshot.docs.forEach(doc => {
+                                batch.delete(doc.ref);
+                            });
+
+                            // Step 2: Add new documents from the file
+                            for (const docId in importedData) {
+                                const docRef = db.collection('donations').doc(docId);
+                                batch.set(docRef, importedData[docId]);
+                            }
+
+                            // Step 3: Commit the batch
+                            return batch.commit();
+                        }).then(() => {
+                            alert('Data Import လုပ်ခြင်း အောင်မြင်ပါသည်။');
+                        }).catch(err => {
+                            console.error("Error during import process: ", err);
+                            alert("Import လုပ်ရာတွင် အမှားအယွင်း ဖြစ်ပွားပါသည်။");
+                        });
+
+                    } catch (error) {
+                        alert('ဖိုင်ဖတ်ရာတွင် အမှားအယွင်းရှိပါသည်။ JSON ဖိုင် ဟုတ်မဟုတ် စစ်ဆေးပါ။');
+                        console.error("Import Error: ", error);
+                    }
+                };
+                reader.readAsText(file);
+                event.target.value = '';
             },
-            
+
+            updateUIForLoginState() {
+                const { adminLoginBtn, logoutBtn, adminActionButtons, userStatus } = this.elements;
+                adminLoginBtn.style.display = this.isLoggedIn ? 'none' : 'inline-flex';
+                logoutBtn.style.display = this.isLoggedIn ? 'inline-flex' : 'none';
+                adminActionButtons.style.display = this.isLoggedIn ? 'flex' : 'none';
+                userStatus.textContent = this.isLoggedIn ? `Login အဖြစ်: ${auth.currentUser.email}` : '';
+            },
+
             handleLogin(e) {
                 e.preventDefault();
-                const passwordInput = document.getElementById('admin-password');
-                const password = passwordInput.value;
-
-                if (password === this.passwords.superadmin) {
-                    this.currentUserRole = 'superadmin';
-                    alert('Super Admin အဖြစ် Login အောင်မြင်ပါသည်။');
-                } else if (password === this.passwords.admin) {
-                    this.currentUserRole = 'admin';
-                    alert('Admin အဖြစ် Login အောင်မြင်ပါသည်။');
-                } else {
-                    alert('Password မှားယွင်းနေပါသည်။');
-                    return;
-                }
-                
-                passwordInput.value = '';
-                this.elements.adminLoginSection.style.display = 'none';
-                this.updateUIForLoginState();
+                const email = this.elements.loginForm.email.value;
+                const password = this.elements.loginForm.password.value;
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(() => {
+                        this.closeAllModals();
+                    })
+                    .catch(error => {
+                        alert(`Login Error: ${error.message}`);
+                    });
             },
 
-            handleLogout() {
-                this.currentUserRole = null;
-                this.updateUIForLoginState();
-                alert('အောင်မြင်စွာ ထွက်ပြီးပါပြီ။');
-            },
-
-            // --- PASSWORD MANAGEMENT ---
-            openPasswordManagementModal() {
-                const { passwordManagementModal, superAdminPassGroup, adminPassGroup } = this.elements;
-                document.getElementById('superadmin-password-input').value = '';
-                document.getElementById('admin-password-input').value = '';
-
-                if (this.currentUserRole === 'superadmin') {
-                    superAdminPassGroup.style.display = 'block';
-                    adminPassGroup.style.display = 'block';
-                } else { // 'admin' role
-                    superAdminPassGroup.style.display = 'none';
-                    adminPassGroup.style.display = 'block';
-                    // We can also change the label for admin
-                    adminPassGroup.querySelector('label').textContent = 'Password အသစ် ပြောင်းရန်';
-                }
-                passwordManagementModal.style.display = 'flex';
-            },
-
-            handleChangePassword(roleToChange) {
-                const inputId = `${roleToChange}-password-input`;
-                const newPassword = document.getElementById(inputId).value;
-
-                if (!newPassword || newPassword.length < 6) {
-                    alert('Password သည် အနည်းဆုံး စာလုံး ၆ လုံး ရှိရပါမည်။');
-                    return;
-                }
-
-                if (confirm(`${roleToChange.charAt(0).toUpperCase() + roleToChange.slice(1)} ၏ password ကို ပြောင်းရန် သေချာပါသလား?`)) {
-                    this.passwords[roleToChange] = newPassword;
-                    this.savePasswords();
-                    alert('Password အောင်မြင်စွာ ပြောင်းလဲပြီးပါပြီ။');
-                    document.getElementById(inputId).value = '';
-                    this.closeAllModals();
-                }
-            },
-            
-            // --- CALENDAR & DONOR LOGIC (Mostly Unchanged) ---
             renderCalendar() {
                 const els = this.elements;
                 els.calendarGrid.innerHTML = '';
@@ -295,31 +280,181 @@
                 const firstDayOfMonth = new Date(year, month, 1).getDay();
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 const today = new Date();
-                const dayHeaders = ['တနင်္ဂနွေ', 'တနင်္လာ', 'အင်္ဂါ', 'ဗုဒ္ဓဟူး', 'ကြာသပတေး', 'သောကြာ', 'စနေ'];
-                dayHeaders.forEach(day=>{const headerCell=document.createElement('div');headerCell.className='calendar-cell day-header';headerCell.textContent=day;els.calendarGrid.appendChild(headerCell)});
-                for (let i=0;i<firstDayOfMonth;i++){const cell=document.createElement('div');cell.className='calendar-cell other-month';els.calendarGrid.appendChild(cell)}
-                for (let i=1;i<=daysInMonth;i++){const cell=this.createDayCell(i,month,year,today);els.calendarGrid.appendChild(cell)}
+
+                ["တနင်္ဂနွေ","တနင်္လာ","အင်္ဂါ","ဗုဒ္ဓဟူး","ကြာသပတေး","သောကြာ","စနေ"].forEach(day=>{const cell=document.createElement("div");cell.className="calendar-cell day-header";cell.textContent=day;els.calendarGrid.appendChild(cell)});
+                for(let i=0;i<firstDayOfMonth;i++){const cell=document.createElement("div");cell.className="calendar-cell other-month";els.calendarGrid.appendChild(cell)}
+                for(let day=1;day<=daysInMonth;day++){
+                    const cell = this.createDayCell(day, month, year, today);
+                    els.calendarGrid.appendChild(cell);
+                }
                 this.updateDonationSummary();
             },
-            createDayCell(day,month,year,today){const cell=document.createElement('div');cell.className='calendar-cell';const cellDate=new Date(year,month,day);const dateKey=`${year}-${month}-${day}`;cell.dataset.dateKey=dateKey;if(day===today.getDate()&&month===today.getMonth()&&year===today.getFullYear()){cell.classList.add('today')}const dayNumber=document.createElement('div');dayNumber.className='day-number';dayNumber.textContent=day;cell.appendChild(dayNumber);const donationsContainer=document.createElement('div');donationsContainer.className='donations-container';cell.appendChild(donationsContainer);const dateDonations=this.donations[dateKey];if(dateDonations){if(dateDonations.morning)this.renderDonationInCell(donationsContainer,dateDonations.morning,dateKey,'morning');if(dateDonations.day)this.renderDonationInCell(donationsContainer,dateDonations.day,dateKey,'day')}return cell},
-            renderDonationInCell(container,data,dateKey,type){const entry=document.createElement('div');entry.className=`donor-entry donor-${type}`;entry.textContent=data.name;entry.addEventListener('click',e=>{e.stopPropagation();if(this.currentUserRole)this.openDonorModal(type,dateKey,data)});container.appendChild(entry)},
-            changeMonth(offset){this.viewDate.setMonth(this.viewDate.getMonth()+offset);this.renderCalendar()},
-            updateDonationSummary(){let morningCount=0;let dayCount=0;const currentMonth=this.viewDate.getMonth();const currentYear=this.viewDate.getFullYear();for(const key in this.donations){const[year,month]=key.split('-').map(Number);if(year===currentYear&&month===currentMonth){if(this.donations[key].morning)morningCount++;if(this.donations[key].day)dayCount++}}document.getElementById('morning-donations-count').textContent=`အလှူရှင် ${morningCount} ဦး`;document.getElementById('day-donations-count').textContent=`အလှူရှင် ${dayCount} ဦး`;document.querySelector('.no-donations').style.display=morningCount+dayCount>0?'none':'block'},
-            handleCellClick(e){if(!this.currentUserRole)return;const cell=e.target.closest('.calendar-cell.admin-active');if(cell&&!e.target.closest('.donor-entry')){this.currentDateKey=cell.dataset.dateKey;const dateDonations=this.donations[this.currentDateKey]||{};document.getElementById('add-morning-btn').disabled=!!dateDonations.morning;document.getElementById('add-day-btn').disabled=!!dateDonations.day;this.elements.addChoiceModal.style.display='flex'}},
-            openDonorModal(type,dateKey=this.currentDateKey,data={}){this.closeAllModals();document.getElementById('modal-title').textContent=`${data.name?'ပြင်ဆင်ရန်':'အသစ်ထည့်ရန်'} - ${type==='morning'?'အရုဏ်ဆွမ်း':'နေ့ဆွမ်း'}`;const form=document.getElementById('donor-form');form.reset();document.getElementById('donor-date-key').value=dateKey;document.getElementById('donation-type-hidden').value=type;document.getElementById('donor-name').value=data.name||'';document.getElementById('donor-address').value=data.address||'';document.getElementById('donor-phone').value=data.phone||'';document.getElementById('delete-donor-btn').style.display=data.name?'inline-block':'none';this.elements.donorModal.style.display='flex'},
-            handleSaveDonor(e){e.preventDefault();const dateKey=document.getElementById('donor-date-key').value;const type=document.getElementById('donation-type-hidden').value;if(!this.donations[dateKey])this.donations[dateKey]={};this.donations[dateKey][type]={name:document.getElementById('donor-name').value.trim(),address:document.getElementById('donor-address').value.trim(),phone:document.getElementById('donor-phone').value.trim()};this.saveAndRerender();this.closeAllModals()},
-            handleDeleteDonor(){if(confirm('ဤအလှူရှင်စာရင်းကို ဖျက်ရန် သေချာပါသလား?')){const dateKey=document.getElementById('donor-date-key').value;const type=document.getElementById('donation-type-hidden').value;delete this.donations[dateKey][type];if(Object.keys(this.donations[dateKey]).length===0)delete this.donations[dateKey];this.saveAndRerender();this.closeAllModals()}},
-            showDonorListModal(type){const title=`${type==='morning'?'အရုဏ်ဆွမ်း':'နေ့ဆွမ်း'} အလှူရှင်များ (${this.viewDate.toLocaleString('my-MM',{month:'long'})})`;document.getElementById('donor-list-title').textContent=title;const donorList=[];const currentMonth=this.viewDate.getMonth();const currentYear=this.viewDate.getFullYear();for(const key in this.donations){const[year,month,day]=key.split('-').map(Number);if(year===currentYear&&month===currentMonth&&this.donations[key][type]){donorList.push({date:day,...this.donations[key][type]})}}donorList.sort((a,b)=>a.date-b.date);let listHtml=`<p>အလှူရှင် မရှိသေးပါ။</p>`;if(donorList.length>0){listHtml=`<table class="results-table"><thead><tr><th>ရက်စွဲ</th><th>အလှူရှင်အမည်</th></tr></thead><tbody>${donorList.map(d=>`<tr><td>${d.date+1} ရက်</td><td>${d.name}</td></tr>`).join('')}</tbody></table>`}document.getElementById('donor-list-content').innerHTML=listHtml;this.elements.donorListModal.style.display='flex'},
-            closeAllModals(){this.elements.modals.forEach(modal=>modal.style.display='none')},
-            exportData(){if(Object.keys(this.donations).length===0)return alert('Export လုပ်ရန် ဒေတာ မရှိသေးပါ။');const dataStr=JSON.stringify(this.donations,null,2);const blob=new Blob([dataStr],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`donations_backup_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);alert('Data Export လုပ်ခြင်း အောင်မြင်ပါသည်။')},
-            importData(event){const file=event.target.files[0];if(!file)return;if(!confirm("သတိပြုရန်: Import လုပ်လိုက်ပါက လက်ရှိဒေတာများအားလုံး ပျက်သွားပြီး import လုပ်သော ဒေတာများဖြင့် အစားထိုးသွားပါမည်။ ဆက်လုပ်ရန် သေချာပါသလား?")){event.target.value='';return}const reader=new FileReader;reader.onload=e=>{try{const importedDonations=JSON.parse(e.target.result);this.donations=importedDonations;this.saveAndRerender();alert('Data Import လုပ်ခြင်း အောင်မြင်ပါသည်။')}catch(error){alert('ဖိုင်ဖတ်ရာတွင် အမှားအယွင်းရှိပါသည်။ JSON ဖိုင် ဟုတ်မဟုတ် စစ်ဆေးပါ။');console.error("Import Error: ",error)}};reader.readAsText(file);event.target.value=''},
-            openSearchModal(){this.elements.searchResultsModal.querySelector('#search-results-content').innerHTML='<p>အလှူရှင်အမည် ရိုက်ထည့်ပြီး ရှာဖွေပါ။</p>';this.elements.searchResultsModal.querySelector('#search-input').value='';this.elements.searchResultsModal.style.display='flex'},
-            handleSearch(e){e.preventDefault();const query=document.getElementById('search-input').value.toLowerCase().trim();if(!query)return document.getElementById('search-results-content').innerHTML='<p>ရှာဖွေရန် စာလုံး လိုအပ်ပါသည်။</p>';const results=[];for(const key in this.donations){const[year,month,day]=key.split('-');const dateStr=`${parseInt(day)+1}-${parseInt(month)+1}-${year}`;['morning','day'].forEach(type=>{if(this.donations[key][type]&&this.donations[key][type].name.toLowerCase().includes(query)){results.push({date:dateStr,type:type==='morning'?'အရုဏ်ဆွမ်း':'နေ့ဆွမ်း',...this.donations[key][type]})}})}let resultsHtml=`<p>"${query}" နှင့် ကိုက်ညီသော အလှူရှင် မတွေ့ပါ။</p>`;if(results.length>0){resultsHtml=`<table class="results-table"><thead><tr><th>ရက်စွဲ</th><th>အလှူအမျိုးအစား</th><th>အမည်</th><th>ဖုန်း</th></tr></thead><tbody>${results.map(r=>`<tr><td>${r.date}</td><td>${r.type}</td><td>${r.name}</td><td>${r.phone||'-'}</td></tr>`).join('')}</tbody></table>`}document.getElementById('search-results-content').innerHTML=resultsHtml}
+            
+            createDayCell(day, month, year, today) {
+                const cell = document.createElement("div");
+                cell.className = "calendar-cell";
+                const dateKey = `${year}-${month}-${day}`;
+                cell.dataset.dateKey = dateKey;
+
+                if(this.isLoggedIn) cell.classList.add('admin-active');
+
+                if(day === today.getDate() && month === today.getMonth() && year === today.getFullYear()){
+                    cell.classList.add("today");
+                }
+                
+                cell.appendChild(Object.assign(document.createElement("div"),{className:"day-number",textContent:day}));
+                cell.appendChild(Object.assign(document.createElement("div"),{className:"donations-container"}));
+                
+                if(this.donations[dateKey]){
+                    const container = cell.querySelector(".donations-container");
+                    if (this.donations[dateKey].morning) this.renderDonationInCell(container, this.donations[dateKey].morning, dateKey, "morning");
+                    if (this.donations[dateKey].day) this.renderDonationInCell(container, this.donations[dateKey].day, dateKey, "day");
+                }
+                return cell;
+            },
+
+            renderDonationInCell(container, data, dateKey, type) {
+                const entry = document.createElement('div');
+                entry.className = `donor-entry donor-${type}`;
+                entry.textContent = data.name;
+                entry.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (this.isLoggedIn) {
+                        this.openDonorModal(type, dateKey, data);
+                    }
+                });
+                container.appendChild(entry);
+            },
+
+            changeMonth(offset) { this.viewDate.setMonth(this.viewDate.getMonth() + offset); this.renderCalendar(); },
+            
+            updateDonationSummary() {
+                let morningCount = 0;
+                let dayCount = 0;
+                const currentMonth = this.viewDate.getMonth();
+                const currentYear = this.viewDate.getFullYear();
+                for (const key in this.donations) {
+                    const [year, month] = key.split('-').map(Number);
+                    if (year === currentYear && month === currentMonth) {
+                        if (this.donations[key].morning) morningCount++;
+                        if (this.donations[key].day) dayCount++;
+                    }
+                }
+                document.getElementById('morning-donations-count').textContent = `အလှူရှင် ${morningCount} ဦး`;
+                document.getElementById('day-donations-count').textContent = `အလှူရှင် ${dayCount} ဦး`;
+                document.querySelector('.no-donations').style.display = (morningCount + dayCount > 0) ? 'none' : 'block';
+            },
+
+            handleCellClick(e) {
+                if (!this.isLoggedIn) return;
+                const cell = e.target.closest('.calendar-cell.admin-active');
+                if (cell && !e.target.closest('.donor-entry')) {
+                    this.currentDateKey = cell.dataset.dateKey;
+                    const dateDonations = this.donations[this.currentDateKey] || {};
+                    document.getElementById('add-morning-btn').disabled = !!dateDonations.morning;
+                    document.getElementById('add-day-btn').disabled = !!dateDonations.day;
+                    this.openModal('add-choice-modal');
+                }
+            },
+
+            openDonorModal(type, dateKey = this.currentDateKey, data = {}) {
+                this.closeAllModals();
+                const { donorForm, deleteDonorBtn } = this.elements;
+                document.getElementById('modal-title').textContent = `${data.name ? 'ပြင်ဆင်ရန်' : 'အသစ်ထည့်ရန်'} - ${type === 'morning' ? 'အရုဏ်ဆွမ်း' : 'နေ့ဆွမ်း'}`;
+                donorForm.reset();
+                donorForm['donor-date-key'].value = dateKey;
+                donorForm['donation-type-hidden'].value = type;
+                donorForm['donor-name'].value = data.name || '';
+                donorForm['donor-address'].value = data.address || '';
+                donorForm['donor-phone'].value = data.phone || '';
+                deleteDonorBtn.style.display = data.name ? 'inline-block' : 'none';
+                this.openModal('donor-modal');
+            },
+
+            handleSaveDonor(e) {
+                e.preventDefault();
+                const { donorForm } = this.elements;
+                const dateKey = donorForm['donor-date-key'].value;
+                const type = donorForm['donation-type-hidden'].value;
+                const donorData = {
+                    name: donorForm['donor-name'].value.trim(),
+                    address: donorForm['donor-address'].value.trim(),
+                    phone: donorForm['donor-phone'].value.trim(),
+                };
+
+                const docRef = db.collection('donations').doc(dateKey);
+                docRef.set({ [type]: donorData }, { merge: true })
+                    .then(() => this.closeAllModals())
+                    .catch(error => console.error("Error saving donor: ", error));
+            },
+
+            handleDeleteDonor() {
+                if (!confirm("ဤအလှူရှင်စာရင်းကို ဖျက်ရန် သေချာပါသလား?")) return;
+                const { donorForm } = this.elements;
+                const dateKey = donorForm['donor-date-key'].value;
+                const type = donorForm['donation-type-hidden'].value;
+
+                const docRef = db.collection('donations').doc(dateKey);
+                docRef.update({
+                    [type]: firebase.firestore.FieldValue.delete()
+                }).then(() => {
+                    this.closeAllModals();
+                    docRef.get().then(doc => {
+                        if (doc.exists && Object.keys(doc.data()).length === 0) {
+                            docRef.delete();
+                        }
+                    });
+                }).catch(error => console.error("Error deleting donor: ", error));
+            },
+
+            showDonorListModal(type) {
+                const title = `${type === 'morning' ? 'အရုဏ်ဆွမ်း' : 'နေ့ဆွမ်း'} အလှူရှင်များ (${this.viewDate.toLocaleString('my-MM', { month: 'long' })})`;
+                document.getElementById('donor-list-title').textContent = title;
+                const donorList = [];
+                const currentMonth = this.viewDate.getMonth();
+                const currentYear = this.viewDate.getFullYear();
+                for (const key in this.donations) {
+                    const [year, month, day] = key.split('-').map(Number);
+                    if (year === currentYear && month === currentMonth && this.donations[key][type]) {
+                        donorList.push({ date: day, ...this.donations[key][type] });
+                    }
+                }
+                donorList.sort((a, b) => a.date - b.date);
+                let listHtml = `<p>အလှူရှင် မရှိသေးပါ။</p>`;
+                if (donorList.length > 0) {
+                    listHtml = `<table class="results-table"><thead><tr><th>ရက်စွဲ</th><th>အလှူရှင်အမည်</th></tr></thead><tbody>${donorList.map(d => `<tr><td>${d.date} ရက်</td><td>${d.name}</td></tr>`).join('')}</tbody></table>`;
+                }
+                document.getElementById('donor-list-content').innerHTML = listHtml;
+                this.openModal('donor-list-modal');
+            },
+
+            handleSearch(e) {
+                e.preventDefault();
+                const query = document.getElementById('search-input').value.toLowerCase().trim();
+                if (!query) return document.getElementById('search-results-content').innerHTML = `<p>ရှာဖွေရန် စာလုံး လိုအပ်ပါသည်။</p>`;
+                const results = [];
+                for (const key in this.donations) {
+                    const [year, month, day] = key.split('-').map(Number);
+                    const dateStr = `${day}-${parseInt(month) + 1}-${year}`;
+                    ['morning', 'day'].forEach(type => {
+                        if (this.donations[key][type] && this.donations[key][type].name.toLowerCase().includes(query)) {
+                            results.push({ date: dateStr, type: type === 'morning' ? 'အရုဏ်ဆွမ်း' : 'နေ့ဆွမ်း', ...this.donations[key][type] });
+                        }
+                    });
+                }
+                let resultsHtml = `<p>"${query}" နှင့် ကိုက်ညီသော အလှူရှင် မတွေ့ပါ။</p>`;
+                if (results.length > 0) {
+                    resultsHtml = `<table class="results-table"><thead><tr><th>ရက်စွဲ</th><th>အလှူအမျိုးအစား</th><th>အမည်</th><th>ဖုန်း</th></tr></thead><tbody>${results.map(r => `<tr><td>${r.date}</td><td>${r.type}</td><td>${r.name}</td><td>${r.phone || '-'}</td></tr>`).join('')}</tbody></table>`;
+                }
+                document.getElementById('search-results-content').innerHTML = resultsHtml;
+            },
+
+            openModal(modalId) { document.getElementById(modalId).style.display = 'flex'; },
+            closeAllModals() { this.elements.modals.forEach(modal => modal.style.display = 'none'); },
         };
 
         App.init();
     });
     </script>
-
 </body>
 </html>
