@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် - ဆွမ်းအလှူရှင်များစာရင်း</title>
+    <title>ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် - ဆွမ်းအလှူရှင်စာရင်း</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap');
@@ -43,17 +43,21 @@
             max-width: 900px;
             padding: 24px;
         }
+        
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
 
         header h1 {
             font-size: clamp(20px, 4vw, 24px);
-            text-align: center;
             margin-bottom: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 15px; /* Gap increased for better spacing */
         }
-        header p { font-size: 14px; color: #666; text-align: center; margin-top: 0; margin-bottom: 24px; }
+        header p { font-size: 14px; color: #666; margin-top: 0; }
 
         .donors-section h2 { font-size: 18px; margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
         .donor-cards { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
@@ -129,8 +133,15 @@
     <div class="container">
         <header>
             <h1>
-                <img src="https://www.svgrepo.com/show/443519/buddhist-temple.svg" alt="Buddhist Temple Logo" style="height: 28px;">
-                <span>ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက်</span>
+                <img src="logo.jpg" 
+                     alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" 
+                     style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
+                
+                <span>ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် - ဆွမ်းအလှူရှင်စာရင်း</span>
+                
+                <img src="logo.jpg" 
+                     alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" 
+                     style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
             </h1>
             <p>ရန်ကုန်၊ ဗဟန်း၊ ကြားတောရရပ်ကွက်၊ ရေတာရှည်လမ်းဟောင်း။</p>
         </header>
@@ -589,7 +600,7 @@
                 if (donorList.length > 0) {
                     listHtml = `<table class="results-table">
                                     <thead><tr><th>ရက်စွဲ</th><th>အလှူရှင်အမည်</th></tr></thead>
-                                    <tbody>${donorList.map(d => `<tr><td>${d.date} ရက်</td><td>${d.name}</td></tr>`).join('')}</tbody>
+                                    <tbody>${donorList.map(d => `<tr><td>${d.date + 1} ရက်</td><td>${d.name}</td></tr>`).join('')}</tbody>
                                 </table>`;
                 }
 
@@ -603,6 +614,10 @@
 
             // --- NEW FEATURES ---
             exportData() {
+                if (Object.keys(this.donations).length === 0) {
+                    alert('Export လုပ်ရန် ဒေတာ မရှိသေးပါ။');
+                    return;
+                }
                 const dataStr = JSON.stringify(this.donations, null, 2);
                 const blob = new Blob([dataStr], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
@@ -611,14 +626,15 @@
                 a.download = `donations_backup_${new Date().toISOString().slice(0,10)}.json`;
                 a.click();
                 URL.revokeObjectURL(url);
-                alert('Data exported successfully!');
+                alert('Data Export လုပ်ခြင်း အောင်မြင်ပါသည်။');
             },
 
             importData(event) {
                 const file = event.target.files[0];
                 if (!file) return;
                 
-                if(!confirm("ဒေတာအဟောင်းများအားလုံး ပျက်သွားပြီး import လုပ်သော ဒေတာများဖြင့် အစားထိုးပါမည်။ သေချာပါသလား?")) {
+                if(!confirm("သတိပြုရန်: Import လုပ်လိုက်ပါက လက်ရှိဒေတာများအားလုံး ပျက်သွားပြီး import လုပ်သော ဒေတာများဖြင့် အစားထိုးသွားပါမည်။ ဆက်လုပ်ရန် သေချာပါသလား?")) {
+                    event.target.value = ''; // Reset input if cancelled
                     return;
                 }
 
@@ -628,18 +644,19 @@
                         const importedDonations = JSON.parse(e.target.result);
                         this.donations = importedDonations; // Replace current data
                         this.saveAndRerender();
-                        alert('Data imported successfully!');
+                        alert('Data Import လုပ်ခြင်း အောင်မြင်ပါသည်။');
                     } catch (error) {
-                        alert('Error reading file. Please make sure it is a valid JSON file.');
+                        alert('ဖိုင်ဖတ်ရာတွင် အမှားအယွင်းရှိပါသည်။ JSON ဖိုင် ဟုတ်မဟုတ် စစ်ဆေးပါ။');
                         console.error("Import Error: ", error);
                     }
                 };
                 reader.readAsText(file);
-                event.target.value = ''; // Reset input
+                event.target.value = ''; // Reset input after reading
             },
 
             openSearchModal() {
                 this.elements.searchResultsContent.innerHTML = '<p>အလှူရှင်အမည် ရိုက်ထည့်ပြီး ရှာဖွေပါ။</p>';
+                document.getElementById('search-input').value = '';
                 this.elements.searchResultsModal.style.display = 'flex';
             },
 
@@ -667,7 +684,7 @@
                     });
                 }
                 
-                let resultsHtml = `<p>ရလဒ် မတွေ့ပါ။</p>`;
+                let resultsHtml = `<p>"${query}" နှင့် ကိုက်ညီသော အလှူရှင် မတွေ့ပါ။</p>`;
                 if (results.length > 0) {
                      resultsHtml = `<table class="results-table">
                                         <thead><tr><th>ရက်စွဲ</th><th>အလှူအမျိုးအစား</th><th>အမည်</th><th>ဖုန်း</th></tr></thead>
