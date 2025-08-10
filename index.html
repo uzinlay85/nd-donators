@@ -7,125 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap');
-
-        :root {
-            --primary-color: #6a5acd;
-            --secondary-color: #8a7dcf;
-            --light-gray: #f8f9fa;
-            --dark-gray: #4a5568;
-            --morning-color: #d4a15b;
-            --day-color: #4caf50;
-            --danger-color: #e53e3e;
-            --success-color: #28a745;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Padauk', sans-serif;
-            background: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 900px;
-            padding: 24px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        header h1 {
-            font-size: clamp(20px, 4vw, 24px);
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px; /* Gap increased for better spacing */
-        }
-        header p { font-size: 14px; color: #666; margin-top: 0; }
-
-        .donors-section h2 { font-size: 18px; margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
-        .donor-cards { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
-        .donor-card { background-color: var(--light-gray); border-radius: 12px; padding: 16px; flex: 1 1 200px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.2s ease-in-out; }
-        .donor-card:hover { background-color: #e9ecef; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .donor-card .icon { font-size: 24px; }
-        .donor-card .icon.coffee { color: var(--morning-color); }
-        .donor-card .icon.utensils { color: var(--day-color); }
-        .donor-card-info h3 { margin: 0; font-size: 16px; }
-        .donor-card-info p { margin: 0; font-size: 14px; color: #555; }
-        .no-donations { color: #777; font-style: italic; text-align: center; padding: 10px; background: #fafafa; border-radius: 8px; }
-
-        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .calendar-header h2 { font-size: clamp(18px, 5vw, 22px); margin: 0; color: var(--primary-color); font-weight: 700; }
-        .nav-btn { background: #eef2f7; border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 18px; color: #555; display: grid; place-items: center; transition: background-color 0.2s; }
-        .nav-btn:hover { background-color: #dbe4f0; }
-
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background-color: #e0e0e0; border: 1px solid #e0e0e0; }
-        .calendar-cell { background-color: #fff; padding: 8px; text-align: right; min-height: 100px; font-size: 14px; position: relative; display: flex; flex-direction: column; transition: background-color 0.2s; }
-        .day-number { font-weight: bold; }
-        .day-header { font-weight: bold; text-align: center; padding: 10px; background-color: var(--light-gray); min-height: auto; justify-content: center; }
-        .other-month { color: #aaa; background-color: #fdfdfd; }
-        .today .day-number { background-color: var(--primary-color); color: white; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; justify-content: center; align-items: center; }
-        .calendar-cell.admin-active:not(.other-month):hover { background-color: #eef2f7; cursor: pointer; }
-        
-        .donations-container { margin-top: auto; display: flex; flex-direction: column; gap: 4px; }
-        .donor-entry { font-size: 12px; color: white; padding: 4px 6px; border-radius: 4px; text-align: center; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .donor-morning { background-color: var(--morning-color); }
-        .donor-day { background-color: var(--day-color); }
-
-        .footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 2px dashed #e0e0e0; padding-top: 16px; margin-top: 24px; gap: 10px; }
-        .admin-btn, .action-btn { background-color: var(--dark-gray); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: background-color 0.2s; }
-        .admin-btn:hover, .action-btn:hover { background-color: #333; }
-        .action-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
-        .action-btn.secondary { background-color: #f1f1f1; color: #333; }
-        .action-btn.secondary:hover { background-color: #e1e1e1; }
-        
-        #admin-login-section { background-color: var(--light-gray); border-radius: 12px; padding: 20px; margin-top: 16px; display: none; }
-        #admin-login-form { display: flex; gap: 10px; align-items: center; }
-        #admin-password { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
-        #login-btn { background-color: var(--success-color); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; }
-        
-        .admin-only { display: none; }
-        #import-file-input { display: none; }
-
-        /* Modal Styles */
-        .modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 1000; animation: fadeIn 0.3s ease; }
-        .modal-content { background: white; padding: 24px; border-radius: 12px; width: 90%; max-width: 450px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .modal-content h3 { margin-top: 0; }
-        .modal-content .form-group { margin-bottom: 16px; }
-        .modal-content label { display: block; margin-bottom: 6px; font-weight: bold; }
-        .modal-content input, .modal-content select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
-        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-        .modal-actions button { padding: 10px 20px; border-radius: 6px; border: none; cursor: pointer; }
-        #save-donor-btn { background-color: var(--success-color); color: white; }
-        #delete-donor-btn { background-color: var(--danger-color); color: white; display: none; }
-        .cancel-btn { background-color: #ccc; }
-        
-        #search-form { display: flex; gap: 8px; margin-bottom: 16px; }
-        #search-input { flex-grow: 1; padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        #donor-list-modal .modal-content, #search-results-modal .modal-content { max-height: 80vh; overflow-y: auto; }
-        .results-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-        .results-table th, .results-table td { padding: 10px; border: 1px solid #ddd; text-align: left; font-size: 14px; }
-        .results-table th { background-color: var(--light-gray); }
-
+        :root{--primary-color:#6a5acd;--secondary-color:#8a7dcf;--light-gray:#f8f9fa;--dark-gray:#4a5568;--morning-color:#d4a15b;--day-color:#4caf50;--danger-color:#e53e3e;--success-color:#28a745}*,*::before,*::after{box-sizing:border-box}body{font-family:'Padauk',sans-serif;background:linear-gradient(to bottom right,var(--primary-color),var(--secondary-color));color:#333;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;margin:0;padding:20px}.container{background-color:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);width:100%;max-width:900px;padding:24px}header{text-align:center;margin-bottom:24px}header h1{font-size:clamp(20px, 4vw, 24px);margin-bottom:8px;display:flex;justify-content:center;align-items:center;gap:15px}header p{font-size:14px;color:#666;margin-top:0}.donors-section h2{font-size:18px;margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:8px}.donor-cards{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px}.donor-card{background-color:var(--light-gray);border-radius:12px;padding:16px;flex:1 1 200px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s ease-in-out}.donor-card:hover{background-color:#e9ecef;transform:translateY(-3px);box-shadow:0 4px 10px rgba(0,0,0,.05)}.donor-card .icon{font-size:24px}.donor-card .icon.coffee{color:var(--morning-color)}.donor-card .icon.utensils{color:var(--day-color)}.donor-card-info h3{margin:0;font-size:16px}.donor-card-info p{margin:0;font-size:14px;color:#555}.no-donations{color:#777;font-style:italic;text-align:center;padding:10px;background:#fafafa;border-radius:8px}.calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.calendar-header h2{font-size:clamp(18px, 5vw, 22px);margin:0;color:var(--primary-color);font-weight:700}.nav-btn{background:#eef2f7;border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;color:#555;display:grid;place-items:center;transition:background-color .2s}.nav-btn:hover{background-color:#dbe4f0}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background-color:#e0e0e0;border:1px solid #e0e0e0}.calendar-cell{background-color:#fff;padding:8px;text-align:right;min-height:100px;font-size:14px;position:relative;display:flex;flex-direction:column;transition:background-color .2s}.day-number{font-weight:700}.day-header{font-weight:700;text-align:center;padding:10px;background-color:var(--light-gray);min-height:auto;justify-content:center}.other-month{color:#aaa;background-color:#fdfdfd}.today .day-number{background-color:var(--primary-color);color:#fff;border-radius:50%;width:28px;height:28px;display:inline-flex;justify-content:center;align-items:center}.calendar-cell.admin-active:not(.other-month):hover{background-color:#eef2f7;cursor:pointer}.donations-container{margin-top:auto;display:flex;flex-direction:column;gap:4px}.donor-entry{font-size:12px;color:#fff;padding:4px 6px;border-radius:4px;text-align:center;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.donor-morning{background-color:var(--morning-color)}.donor-day{background-color:var(--day-color)}.footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-top:2px dashed #e0e0e0;padding-top:16px;margin-top:24px;gap:10px}.admin-btn,.action-btn{background-color:var(--dark-gray);color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:background-color .2s}.admin-btn:hover,.action-btn:hover{background-color:#333}.action-buttons{display:flex;flex-wrap:wrap;gap:8px}.action-btn.secondary{background-color:#f1f1f1;color:#333}.action-btn.secondary:hover{background-color:#e1e1e1}#admin-login-section{background-color:var(--light-gray);border-radius:12px;padding:20px;margin-top:16px;display:none}#admin-login-form{display:flex;gap:10px;align-items:center}#admin-password{flex-grow:1;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:14px}#login-btn{background-color:var(--success-color);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-size:14px}.admin-only{display:none}#import-file-input{display:none}.modal-backdrop{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:1000;animation:fadeIn .3s ease}.modal-content{background:#fff;padding:24px;border-radius:12px;width:90%;max-width:450px;box-shadow:0 5px 15px rgba(0,0,0,.3)}.modal-content h3{margin-top:0}.modal-content .form-group{margin-bottom:16px}.modal-content label{display:block;margin-bottom:6px;font-weight:700}.modal-content input,.modal-content select{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;flex-wrap:wrap}.modal-actions button{padding:10px 20px;border-radius:6px;border:none;cursor:pointer}#save-donor-btn{background-color:var(--success-color);color:#fff}#delete-donor-btn{background-color:var(--danger-color);color:#fff;display:none}.cancel-btn{background-color:#ccc}#search-form{display:flex;gap:8px;margin-bottom:16px}#search-input{flex-grow:1;padding:8px;border-radius:6px;border:1px solid #ccc}@keyframes fadeIn{from{opacity:0}to{opacity:1}}#donor-list-modal .modal-content,#search-results-modal .modal-content{max-height:80vh;overflow-y:auto}.results-table{width:100%;border-collapse:collapse;margin-top:16px}.results-table th,.results-table td{padding:10px;border:1px solid #ddd;text-align:left;font-size:14px}.results-table th{background-color:var(--light-gray)}#password-management-modal .form-group input{margin-bottom:8px}
     </style>
 </head>
 <body>
@@ -133,15 +15,9 @@
     <div class="container">
         <header>
             <h1>
-                <img src="logo.jpg" 
-                     alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" 
-                     style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
-                
+                <img src="logo.jpg" alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
                 <span>ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် - ဆွမ်းအလှူရှင်စာရင်း</span>
-                
-                <img src="logo.jpg" 
-                     alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" 
-                     style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
+                <img src="logo.jpg" alt="ပါဠိတက္ကသိုလ်ညောင်တုန်းကျောင်းတိုက် Logo" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
             </h1>
             <p>ရန်ကုန်၊ ဗဟန်း၊ ကြားတောရရပ်ကွက်၊ ရေတာရှည်လမ်းဟောင်း။</p>
         </header>
@@ -150,109 +26,56 @@
             <section class="donors-section">
                 <h2>ယခုလ အလှူရှင် အကျဉ်းချုပ်</h2>
                 <div class="donor-cards">
-                    <div id="morning-donor-card" class="donor-card">
-                        <div class="icon coffee"><i class="fa-solid fa-mug-saucer"></i></div>
-                        <div class="donor-card-info">
-                            <h3>အရုဏ်ဆွမ်း</h3>
-                            <p id="morning-donations-count">အလှူရှင် ၀ ဦး</p>
-                        </div>
-                    </div>
-                    <div id="day-donor-card" class="donor-card">
-                        <div class="icon utensils"><i class="fa-solid fa-utensils"></i></div>
-                        <div class="donor-card-info">
-                            <h3>နေ့ဆွမ်း</h3>
-                            <p id="day-donations-count">အလှူရှင် ၀ ဦး</p>
-                        </div>
-                    </div>
+                    <div id="morning-donor-card" class="donor-card"><div class="icon coffee"><i class="fa-solid fa-mug-saucer"></i></div><div class="donor-card-info"><h3>အရုဏ်ဆွမ်း</h3><p id="morning-donations-count">အလှူရှင် ၀ ဦး</p></div></div>
+                    <div id="day-donor-card" class="donor-card"><div class="icon utensils"><i class="fa-solid fa-utensils"></i></div><div class="donor-card-info"><h3>နေ့ဆွမ်း</h3><p id="day-donations-count">အလှူရှင် ၀ ဦး</p></div></div>
                 </div>
                 <p class="no-donations">ယခုလအတွက် အလှူရှင် မရှိသေးပါ။</p>
             </section>
-
             <section class="calendar-container">
-                <div class="calendar-header">
-                    <button id="prev-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <h2 id="month-year-header"></h2>
-                    <button id="next-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
+                <div class="calendar-header"><button id="prev-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button><h2 id="month-year-header"></h2><button id="next-month-btn" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button></div>
                 <div class="calendar-grid" id="calendar-grid"></div>
             </section>
         </main>
 
         <footer class="footer">
-            <button id="admin-access-btn" class="admin-btn"><i class="fa-solid fa-lock"></i> Admin</button>
+            <div id="user-status"></div>
+            <div id="auth-controls">
+                <button id="admin-login-btn" class="admin-btn"><i class="fa-solid fa-right-to-bracket"></i> Admin Login</button>
+                <button id="logout-btn" class="admin-btn admin-only" style="background-color: var(--danger-color);"><i class="fa-solid fa-right-from-bracket"></i> ထွက်မည်</button>
+            </div>
             <div id="admin-action-buttons" class="action-buttons admin-only">
-                <button id="search-donor-btn" class="action-btn secondary"><i class="fa-solid fa-search"></i> အလှူရှင်ရှာရန်</button>
-                <button id="change-password-btn" class="action-btn secondary"><i class="fa-solid fa-key"></i> Password ပြောင်းရန်</button>
-                <button id="export-btn" class="action-btn secondary"><i class="fa-solid fa-download"></i> Export Data</button>
-                <button id="import-btn" class="action-btn secondary"><i class="fa-solid fa-upload"></i> Import Data</button>
+                <button id="search-donor-btn" class="action-btn secondary"><i class="fa-solid fa-search"></i> ရှာရန်</button>
+                <button id="manage-passwords-btn" class="action-btn secondary"><i class="fa-solid fa-key"></i> Password များစီမံရန်</button>
+                <button id="export-btn" class="action-btn secondary"><i class="fa-solid fa-download"></i> Export</button>
+                <button id="import-btn" class="action-btn secondary"><i class="fa-solid fa-upload"></i> Import</button>
                 <input type="file" id="import-file-input" accept=".json">
             </div>
         </footer>
         
-        <section id="admin-login-section">
-            <form id="admin-login-form">
-                <input type="password" id="admin-password" placeholder="Admin password ထည့်ပါ" required>
-                <button type="submit" id="login-btn">Login</button>
-            </form>
-        </section>
+        <section id="admin-login-section"><form id="admin-login-form"><input type="password" id="admin-password" placeholder="Super Admin or Admin Password" required><button type="submit" id="login-btn">Login</button></form></section>
     </div>
 
-    <div id="add-choice-modal" class="modal-backdrop">
-        <div class="modal-content">
-            <h3>အလှူရှင်အသစ်ထည့်ရန်</h3>
-            <div class="modal-actions" style="flex-direction: column;">
-                <button id="add-morning-btn">အရုဏ်ဆွမ်း အလှူရှင်</button>
-                <button id="add-day-btn">နေ့ဆွမ်း အလှူရှင်</button>
-                <button class="cancel-btn">မလုပ်တော့ပါ</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="donor-modal" class="modal-backdrop">
-        <div class="modal-content">
-            <h3 id="modal-title">အလှူရှင် အချက်အလက်</h3>
-            <form id="donor-form">
-                <input type="hidden" id="donor-date-key">
-                <input type="hidden" id="donation-type-hidden">
-                <div class="form-group">
-                    <label for="donor-name">အလှူရှင်အမည်</label>
-                    <input type="text" id="donor-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="donor-address">လိပ်စာ</label>
-                    <input type="text" id="donor-address">
-                </div>
-                <div class="form-group">
-                    <label for="donor-phone">ဖုန်းနံပါတ်</label>
-                    <input type="text" id="donor-phone">
-                </div>
-                <div class="modal-actions">
-                    <button type="button" id="delete-donor-btn">ဖျက်မည်</button>
-                    <button type="button" class="cancel-btn">မလုပ်တော့ပါ</button>
-                    <button type="submit" id="save-donor-btn">သိမ်းမည်</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="donor-list-modal" class="modal-backdrop">
-        <div class="modal-content">
-            <h3 id="donor-list-title">အလှူရှင်များ စာရင်း</h3>
-            <div id="donor-list-content"></div>
-            <div class="modal-actions">
-                <button class="cancel-btn">ပိတ်မည်</button>
-            </div>
-        </div>
-    </div>
+    <div id="add-choice-modal" class="modal-backdrop"><div class="modal-content"><h3>အလှူရှင်အသစ်ထည့်ရန်</h3><div class="modal-actions" style="flex-direction: column;"><button id="add-morning-btn">အရုဏ်ဆွမ်း အလှူရှင်</button><button id="add-day-btn">နေ့ဆွမ်း အလှူရှင်</button><button class="cancel-btn">မလုပ်တော့ပါ</button></div></div></div>
+    <div id="donor-modal" class="modal-backdrop"><div class="modal-content"><h3 id="modal-title">အလှူရှင် အချက်အလက်</h3><form id="donor-form"><input type="hidden" id="donor-date-key"><input type="hidden" id="donation-type-hidden"><div class="form-group"><label for="donor-name">အလှူရှင်အမည်</label><input type="text" id="donor-name" required></div><div class="form-group"><label for="donor-address">လိပ်စာ</label><input type="text" id="donor-address"></div><div class="form-group"><label for="donor-phone">ဖုန်းနံပါတ်</label><input type="text" id="donor-phone"></div><div class="modal-actions"><button type="button" id="delete-donor-btn">ဖျက်မည်</button><button type="button" class="cancel-btn">မလုပ်တော့ပါ</button><button type="submit" id="save-donor-btn">သိမ်းမည်</button></div></form></div></div>
+    <div id="donor-list-modal" class="modal-backdrop"><div class="modal-content"><h3 id="donor-list-title">အလှူရှင်များ စာရင်း</h3><div id="donor-list-content"></div><div class="modal-actions"><button class="cancel-btn">ပိတ်မည်</button></div></div></div>
+    <div id="search-results-modal" class="modal-backdrop"><div class="modal-content"><h3>အလှူရှင် ရှာဖွေရန်</h3><form id="search-form"><input type="search" id="search-input" placeholder="အမည်ဖြင့် ရှာရန်..."><button type="submit" class="action-btn"><i class="fa-solid fa-search"></i></button></form><div id="search-results-content"></div><div class="modal-actions"><button class="cancel-btn">ပိတ်မည်</button></div></div></div>
     
-    <div id="search-results-modal" class="modal-backdrop">
+    <div id="password-management-modal" class="modal-backdrop">
         <div class="modal-content">
-            <h3>အလှူရှင် ရှာဖွေရန်</h3>
-             <form id="search-form">
-                <input type="search" id="search-input" placeholder="အမည်ဖြင့် ရှာရန်...">
-                <button type="submit" class="action-btn"><i class="fa-solid fa-search"></i></button>
+            <h3>Password များစီမံရန်</h3>
+            <form id="password-management-form">
+                <div class="form-group" id="superadmin-password-group">
+                    <label for="superadmin-password-input">Super Admin Password အသစ်</label>
+                    <input type="password" id="superadmin-password-input" placeholder="အနည်းဆုံး ၆လုံး">
+                    <button type="button" class="action-btn" data-role="superadmin">Super Admin Pass ပြောင်းမည်</button>
+                </div>
+                <hr style="margin: 20px 0;">
+                <div class="form-group" id="admin-password-group">
+                    <label for="admin-password-input">Admin Password အသစ်</label>
+                    <input type="password" id="admin-password-input" placeholder="အနည်းဆုံး ၆လုံး">
+                    <button type="button" class="action-btn" data-role="admin">Admin Pass ပြောင်းမည်</button>
+                </div>
             </form>
-            <div id="search-results-content"></div>
             <div class="modal-actions">
                 <button class="cancel-btn">ပိတ်မည်</button>
             </div>
@@ -266,14 +89,13 @@
             // --- STATE ---
             viewDate: new Date(),
             donations: {},
-            adminPassword: 'admin',
-            isAdmin: false,
-            currentDateKey: null,
+            passwords: {},
+            currentUserRole: null, // null, 'admin', or 'superadmin'
 
             // --- DOM Elements ---
             elements: {
-                // Main Page
-                adminAccessBtn: document.getElementById('admin-access-btn'),
+                adminLoginBtn: document.getElementById('admin-login-btn'),
+                logoutBtn: document.getElementById('logout-btn'),
                 adminLoginSection: document.getElementById('admin-login-section'),
                 adminLoginForm: document.getElementById('admin-login-form'),
                 adminActionButtons: document.getElementById('admin-action-buttons'),
@@ -281,16 +103,10 @@
                 monthYearHeader: document.getElementById('month-year-header'),
                 prevMonthBtn: document.getElementById('prev-month-btn'),
                 nextMonthBtn: document.getElementById('next-month-btn'),
-
-                // Donor Cards
-                morningDonorCard: document.getElementById('morning-donor-card'),
-                dayDonorCard: document.getElementById('day-donor-card'),
-                morningCountEl: document.getElementById('morning-donations-count'),
-                dayCountEl: document.getElementById('day-donations-count'),
-                noDonationsMsg: document.querySelector('.no-donations'),
+                userStatus: document.getElementById('user-status'),
                 
                 // Admin Buttons
-                changePasswordBtn: document.getElementById('change-password-btn'),
+                managePasswordsBtn: document.getElementById('manage-passwords-btn'),
                 exportBtn: document.getElementById('export-btn'),
                 importBtn: document.getElementById('import-btn'),
                 importFileInput: document.getElementById('import-file-input'),
@@ -302,17 +118,12 @@
                 donorModal: document.getElementById('donor-modal'),
                 donorListModal: document.getElementById('donor-list-modal'),
                 searchResultsModal: document.getElementById('search-results-modal'),
+                passwordManagementModal: document.getElementById('password-management-modal'),
                 
-                // Modal Forms & Buttons
-                donorForm: document.getElementById('donor-form'),
-                modalTitle: document.getElementById('modal-title'),
-                deleteDonorBtn: document.getElementById('delete-donor-btn'),
-                addMorningBtn: document.getElementById('add-morning-btn'),
-                addDayBtn: document.getElementById('add-day-btn'),
-                donorListContent: document.getElementById('donor-list-content'),
-                donorListTitle: document.getElementById('donor-list-title'),
-                searchForm: document.getElementById('search-form'),
-                searchResultsContent: document.getElementById('search-results-content'),
+                // Password Modal Elements
+                passwordManagementForm: document.getElementById('password-management-form'),
+                superAdminPassGroup: document.getElementById('superadmin-password-group'),
+                adminPassGroup: document.getElementById('admin-password-group'),
             },
 
             // --- INITIALIZATION ---
@@ -320,22 +131,26 @@
                 this.loadData();
                 this.addEventListeners();
                 this.renderCalendar();
+                this.updateUIForLoginState();
             },
 
             // --- DATA HANDLING ---
             loadData() {
                 this.donations = JSON.parse(localStorage.getItem('donations_data_v3')) || {};
-                this.adminPassword = localStorage.getItem('admin_password_v3') || 'admin123';
+                const storedPasswords = JSON.parse(localStorage.getItem('app_passwords_v4'));
+                this.passwords = storedPasswords || {
+                    superadmin: 'super123',
+                    admin: 'admin123'
+                };
+                this.savePasswords(); // Save defaults if not present
             },
-            saveData() {
-                localStorage.setItem('donations_data_v3', JSON.stringify(this.donations));
+            savePasswords() {
+                localStorage.setItem('app_passwords_v4', JSON.stringify(this.passwords));
             },
             saveAndRerender() {
-                this.saveData();
+                localStorage.setItem('donations_data_v3', JSON.stringify(this.donations));
                 this.renderCalendar();
-            },
-            getDateKey(date) {
-                return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+                this.updateUIForLoginState();
             },
 
             // --- EVENT LISTENERS ---
@@ -344,13 +159,19 @@
                 els.prevMonthBtn.addEventListener('click', () => this.changeMonth(-1));
                 els.nextMonthBtn.addEventListener('click', () => this.changeMonth(1));
                 
-                els.adminAccessBtn.addEventListener('click', () => this.toggleLoginSection());
+                els.adminLoginBtn.addEventListener('click', () => this.toggleLoginSection());
+                els.logoutBtn.addEventListener('click', () => this.handleLogout());
                 els.adminLoginForm.addEventListener('submit', (e) => this.handleLogin(e));
-                els.changePasswordBtn.addEventListener('click', () => this.changePassword());
                 
+                els.managePasswordsBtn.addEventListener('click', () => this.openPasswordManagementModal());
+                els.passwordManagementForm.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'BUTTON' && e.target.dataset.role) {
+                        this.handleChangePassword(e.target.dataset.role);
+                    }
+                });
+
                 els.calendarGrid.addEventListener('click', (e) => this.handleCellClick(e));
                 
-                // Modal interactions
                 els.modals.forEach(modal => {
                     modal.addEventListener('click', (e) => {
                         if (e.target.classList.contains('modal-backdrop') || e.target.classList.contains('cancel-btn')) {
@@ -358,341 +179,142 @@
                         }
                     });
                 });
+                
+                document.getElementById('add-morning-btn').addEventListener('click', () => this.openDonorModal('morning'));
+                document.getElementById('add-day-btn').addEventListener('click', () => this.openDonorModal('day'));
+                document.getElementById('donor-form').addEventListener('submit', (e) => this.handleSaveDonor(e));
+                document.getElementById('delete-donor-btn').addEventListener('click', () => this.handleDeleteDonor());
 
-                els.addMorningBtn.addEventListener('click', () => this.openDonorModal('morning'));
-                els.addDayBtn.addEventListener('click', () => this.openDonorModal('day'));
-                els.donorForm.addEventListener('submit', (e) => this.handleSaveDonor(e));
-                els.deleteDonorBtn.addEventListener('click', () => this.handleDeleteDonor());
+                document.getElementById('morning-donor-card').addEventListener('click', () => this.showDonorListModal('morning'));
+                document.getElementById('day-donor-card').addEventListener('click', () => this.showDonorListModal('day'));
 
-                // Donor list views
-                els.morningDonorCard.addEventListener('click', () => this.showDonorListModal('morning'));
-                els.dayDonorCard.addEventListener('click', () => this.showDonorListModal('day'));
-
-                // New Features
                 els.exportBtn.addEventListener('click', () => this.exportData());
                 els.importBtn.addEventListener('click', () => els.importFileInput.click());
                 els.importFileInput.addEventListener('change', (e) => this.importData(e));
                 els.searchDonorBtn.addEventListener('click', () => this.openSearchModal());
-                els.searchForm.addEventListener('submit', (e) => this.handleSearch(e));
+                document.getElementById('search-form').addEventListener('submit', (e) => this.handleSearch(e));
             },
 
-            // --- CALENDAR LOGIC ---
+            // --- UI & STATE MANAGEMENT ---
+            updateUIForLoginState() {
+                const { adminLoginBtn, logoutBtn, adminActionButtons, userStatus } = this.elements;
+                const isLoggedIn = this.currentUserRole !== null;
+                
+                adminLoginBtn.style.display = isLoggedIn ? 'none' : 'inline-flex';
+                logoutBtn.style.display = isLoggedIn ? 'inline-flex' : 'none';
+                adminActionButtons.style.display = isLoggedIn ? 'flex' : 'none';
+
+                if (isLoggedIn) {
+                    const roleText = this.currentUserRole === 'superadmin' ? 'Super Admin' : 'Admin';
+                    userStatus.innerHTML = `<span style="font-size: 14px; color: #333;">Login အဖြစ်: <strong>${roleText}</strong></span>`;
+                    this.elements.managePasswordsBtn.style.display = 'inline-flex';
+                } else {
+                    userStatus.innerHTML = '';
+                }
+
+                document.querySelectorAll('.calendar-cell:not(.other-month)').forEach(cell => {
+                    cell.classList.toggle('admin-active', isLoggedIn);
+                });
+            },
+            
+            toggleLoginSection() {
+                const section = this.elements.adminLoginSection;
+                section.style.display = section.style.display === 'block' ? 'none' : 'block';
+            },
+            
+            handleLogin(e) {
+                e.preventDefault();
+                const passwordInput = document.getElementById('admin-password');
+                const password = passwordInput.value;
+
+                if (password === this.passwords.superadmin) {
+                    this.currentUserRole = 'superadmin';
+                    alert('Super Admin အဖြစ် Login အောင်မြင်ပါသည်။');
+                } else if (password === this.passwords.admin) {
+                    this.currentUserRole = 'admin';
+                    alert('Admin အဖြစ် Login အောင်မြင်ပါသည်။');
+                } else {
+                    alert('Password မှားယွင်းနေပါသည်။');
+                    return;
+                }
+                
+                passwordInput.value = '';
+                this.elements.adminLoginSection.style.display = 'none';
+                this.updateUIForLoginState();
+            },
+
+            handleLogout() {
+                this.currentUserRole = null;
+                this.updateUIForLoginState();
+                alert('အောင်မြင်စွာ ထွက်ပြီးပါပြီ။');
+            },
+
+            // --- PASSWORD MANAGEMENT ---
+            openPasswordManagementModal() {
+                const { passwordManagementModal, superAdminPassGroup, adminPassGroup } = this.elements;
+                document.getElementById('superadmin-password-input').value = '';
+                document.getElementById('admin-password-input').value = '';
+
+                if (this.currentUserRole === 'superadmin') {
+                    superAdminPassGroup.style.display = 'block';
+                    adminPassGroup.style.display = 'block';
+                } else { // 'admin' role
+                    superAdminPassGroup.style.display = 'none';
+                    adminPassGroup.style.display = 'block';
+                    // We can also change the label for admin
+                    adminPassGroup.querySelector('label').textContent = 'Password အသစ် ပြောင်းရန်';
+                }
+                passwordManagementModal.style.display = 'flex';
+            },
+
+            handleChangePassword(roleToChange) {
+                const inputId = `${roleToChange}-password-input`;
+                const newPassword = document.getElementById(inputId).value;
+
+                if (!newPassword || newPassword.length < 6) {
+                    alert('Password သည် အနည်းဆုံး စာလုံး ၆ လုံး ရှိရပါမည်။');
+                    return;
+                }
+
+                if (confirm(`${roleToChange.charAt(0).toUpperCase() + roleToChange.slice(1)} ၏ password ကို ပြောင်းရန် သေချာပါသလား?`)) {
+                    this.passwords[roleToChange] = newPassword;
+                    this.savePasswords();
+                    alert('Password အောင်မြင်စွာ ပြောင်းလဲပြီးပါပြီ။');
+                    document.getElementById(inputId).value = '';
+                    this.closeAllModals();
+                }
+            },
+            
+            // --- CALENDAR & DONOR LOGIC (Mostly Unchanged) ---
             renderCalendar() {
                 const els = this.elements;
                 els.calendarGrid.innerHTML = '';
                 const year = this.viewDate.getFullYear();
                 const month = this.viewDate.getMonth();
-
                 els.monthYearHeader.textContent = `${this.viewDate.toLocaleString('my-MM', { month: 'long' })} ${year}`;
-
                 const firstDayOfMonth = new Date(year, month, 1).getDay();
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
                 const today = new Date();
-
                 const dayHeaders = ['တနင်္ဂနွေ', 'တနင်္လာ', 'အင်္ဂါ', 'ဗုဒ္ဓဟူး', 'ကြာသပတေး', 'သောကြာ', 'စနေ'];
-                dayHeaders.forEach(day => {
-                    const headerCell = document.createElement('div');
-                    headerCell.className = 'calendar-cell day-header';
-                    headerCell.textContent = day;
-                    els.calendarGrid.appendChild(headerCell);
-                });
-                
-                for (let i = 0; i < firstDayOfMonth; i++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'calendar-cell other-month';
-                    els.calendarGrid.appendChild(cell);
-                }
-
-                for (let i = 1; i <= daysInMonth; i++) {
-                    const cell = this.createDayCell(i, month, year, today);
-                    els.calendarGrid.appendChild(cell);
-                }
-
+                dayHeaders.forEach(day=>{const headerCell=document.createElement('div');headerCell.className='calendar-cell day-header';headerCell.textContent=day;els.calendarGrid.appendChild(headerCell)});
+                for (let i=0;i<firstDayOfMonth;i++){const cell=document.createElement('div');cell.className='calendar-cell other-month';els.calendarGrid.appendChild(cell)}
+                for (let i=1;i<=daysInMonth;i++){const cell=this.createDayCell(i,month,year,today);els.calendarGrid.appendChild(cell)}
                 this.updateDonationSummary();
-                this.toggleAdminView(this.isAdmin);
             },
-            
-            createDayCell(day, month, year, today) {
-                const cell = document.createElement('div');
-                cell.className = 'calendar-cell';
-                const cellDate = new Date(year, month, day);
-                const dateKey = this.getDateKey(cellDate);
-                cell.dataset.dateKey = dateKey;
-
-                if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                    cell.classList.add('today');
-                }
-                
-                const dayNumber = document.createElement('div');
-                dayNumber.className = 'day-number';
-                dayNumber.textContent = day;
-                cell.appendChild(dayNumber);
-
-                const donationsContainer = document.createElement('div');
-                donationsContainer.className = 'donations-container';
-                cell.appendChild(donationsContainer);
-
-                const dateDonations = this.donations[dateKey];
-                if (dateDonations) {
-                    if (dateDonations.morning) this.renderDonationInCell(donationsContainer, dateDonations.morning, dateKey, 'morning');
-                    if (dateDonations.day) this.renderDonationInCell(donationsContainer, dateDonations.day, dateKey, 'day');
-                }
-                return cell;
-            },
-
-            renderDonationInCell(container, data, dateKey, type) {
-                const entry = document.createElement('div');
-                entry.className = `donor-entry donor-${type}`;
-                entry.textContent = data.name;
-                entry.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (this.isAdmin) {
-                        this.openDonorModal(type, dateKey, data);
-                    }
-                });
-                container.appendChild(entry);
-            },
-
-            changeMonth(offset) {
-                this.viewDate.setMonth(this.viewDate.getMonth() + offset);
-                this.renderCalendar();
-            },
-            
-            updateDonationSummary() {
-                let morningCount = 0;
-                let dayCount = 0;
-                const currentMonth = this.viewDate.getMonth();
-                const currentYear = this.viewDate.getFullYear();
-
-                for (const key in this.donations) {
-                    const [year, month] = key.split('-').map(Number);
-                    if (year === currentYear && month === currentMonth) {
-                        if (this.donations[key].morning) morningCount++;
-                        if (this.donations[key].day) dayCount++;
-                    }
-                }
-
-                this.elements.morningCountEl.textContent = `အလှူရှင် ${morningCount} ဦး`;
-                this.elements.dayCountEl.textContent = `အလှူရှင် ${dayCount} ဦး`;
-                this.elements.noDonationsMsg.style.display = (morningCount + dayCount > 0) ? 'none' : 'block';
-            },
-
-            // --- ADMIN & AUTH ---
-            toggleLoginSection() {
-                const section = this.elements.adminLoginSection;
-                section.style.display = section.style.display === 'block' ? 'none' : 'block';
-            },
-
-            handleLogin(e) {
-                e.preventDefault();
-                const passwordInput = document.getElementById('admin-password');
-                if (passwordInput.value === this.adminPassword) {
-                    alert('Login အောင်မြင်ပါသည်။');
-                    this.isAdmin = true;
-                    this.toggleAdminView(true);
-                    passwordInput.value = '';
-                    this.elements.adminLoginSection.style.display = 'none';
-                } else {
-                    alert('Password မှားယွင်းနေပါသည်။');
-                }
-            },
-
-            changePassword() {
-                const newPassword = prompt('Password အသစ်ကို ထည့်သွင်းပါ။ (အနည်းဆုံး ၆ လုံး)');
-                if (newPassword && newPassword.length >= 6) {
-                    this.adminPassword = newPassword;
-                    localStorage.setItem('admin_password_v3', newPassword);
-                    alert('Password အသစ်ကို အောင်မြင်စွာ ပြောင်းလဲပြီးပါပြီ။');
-                } else if (newPassword) {
-                    alert('Password သည် အနည်းဆုံး စာလုံး ၆ လုံး ရှိရပါမည်။');
-                }
-            },
-            
-            toggleAdminView(isAdmin) {
-                this.elements.adminAccessBtn.style.display = isAdmin ? 'none' : 'flex';
-                this.elements.adminActionButtons.style.display = isAdmin ? 'flex' : 'none';
-                document.querySelectorAll('.calendar-cell:not(.other-month)').forEach(cell => {
-                    cell.classList.toggle('admin-active', isAdmin);
-                });
-            },
-
-            // --- MODAL & FORM HANDLING ---
-            handleCellClick(e) {
-                if (!this.isAdmin) return;
-                const cell = e.target.closest('.calendar-cell.admin-active');
-                if (cell && !e.target.closest('.donor-entry')) {
-                    this.currentDateKey = cell.dataset.dateKey;
-                    const dateDonations = this.donations[this.currentDateKey] || {};
-                    
-                    this.elements.addMorningBtn.disabled = !!dateDonations.morning;
-                    this.elements.addDayBtn.disabled = !!dateDonations.day;
-                    
-                    this.elements.addChoiceModal.style.display = 'flex';
-                }
-            },
-
-            openDonorModal(type, dateKey = this.currentDateKey, data = {}) {
-                this.closeAllModals();
-                this.elements.modalTitle.textContent = `${data.name ? 'ပြင်ဆင်ရန်' : 'အသစ်ထည့်ရန်'} - ${type === 'morning' ? 'အရုဏ်ဆွမ်း' : 'နေ့ဆွမ်း'}`;
-                this.elements.donorForm.reset();
-                
-                document.getElementById('donor-date-key').value = dateKey;
-                document.getElementById('donation-type-hidden').value = type;
-                
-                document.getElementById('donor-name').value = data.name || '';
-                document.getElementById('donor-address').value = data.address || '';
-                document.getElementById('donor-phone').value = data.phone || '';
-
-                this.elements.deleteDonorBtn.style.display = data.name ? 'inline-block' : 'none';
-                this.elements.donorModal.style.display = 'flex';
-            },
-
-            handleSaveDonor(e) {
-                e.preventDefault();
-                const dateKey = document.getElementById('donor-date-key').value;
-                const type = document.getElementById('donation-type-hidden').value;
-
-                if (!this.donations[dateKey]) this.donations[dateKey] = {};
-                
-                this.donations[dateKey][type] = {
-                    name: document.getElementById('donor-name').value.trim(),
-                    address: document.getElementById('donor-address').value.trim(),
-                    phone: document.getElementById('donor-phone').value.trim(),
-                };
-                
-                this.saveAndRerender();
-                this.closeAllModals();
-            },
-
-            handleDeleteDonor() {
-                if (confirm('ဤအလှူရှင်စာရင်းကို ဖျက်ရန် သေချာပါသလား?')) {
-                    const dateKey = document.getElementById('donor-date-key').value;
-                    const type = document.getElementById('donation-type-hidden').value;
-                    
-                    delete this.donations[dateKey][type];
-                    if (Object.keys(this.donations[dateKey]).length === 0) {
-                        delete this.donations[dateKey];
-                    }
-                    
-                    this.saveAndRerender();
-                    this.closeAllModals();
-                }
-            },
-            
-            showDonorListModal(type) {
-                const title = `${type === 'morning' ? 'အရုဏ်ဆွမ်း' : 'နေ့ဆွမ်း'} အလှူရှင်များ (${this.viewDate.toLocaleString('my-MM', { month: 'long' })})`;
-                this.elements.donorListTitle.textContent = title;
-                
-                const donorList = [];
-                const currentMonth = this.viewDate.getMonth();
-                const currentYear = this.viewDate.getFullYear();
-
-                for (const key in this.donations) {
-                    const [year, month, day] = key.split('-').map(Number);
-                    if (year === currentYear && month === currentMonth && this.donations[key][type]) {
-                        donorList.push({ date: day, ...this.donations[key][type] });
-                    }
-                }
-                
-                donorList.sort((a, b) => a.date - b.date);
-
-                let listHtml = `<p>အလှူရှင် မရှိသေးပါ။</p>`;
-                if (donorList.length > 0) {
-                    listHtml = `<table class="results-table">
-                                    <thead><tr><th>ရက်စွဲ</th><th>အလှူရှင်အမည်</th></tr></thead>
-                                    <tbody>${donorList.map(d => `<tr><td>${d.date + 1} ရက်</td><td>${d.name}</td></tr>`).join('')}</tbody>
-                                </table>`;
-                }
-
-                this.elements.donorListContent.innerHTML = listHtml;
-                this.elements.donorListModal.style.display = 'flex';
-            },
-
-            closeAllModals() {
-                this.elements.modals.forEach(modal => modal.style.display = 'none');
-            },
-
-            // --- NEW FEATURES ---
-            exportData() {
-                if (Object.keys(this.donations).length === 0) {
-                    alert('Export လုပ်ရန် ဒေတာ မရှိသေးပါ။');
-                    return;
-                }
-                const dataStr = JSON.stringify(this.donations, null, 2);
-                const blob = new Blob([dataStr], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `donations_backup_${new Date().toISOString().slice(0,10)}.json`;
-                a.click();
-                URL.revokeObjectURL(url);
-                alert('Data Export လုပ်ခြင်း အောင်မြင်ပါသည်။');
-            },
-
-            importData(event) {
-                const file = event.target.files[0];
-                if (!file) return;
-                
-                if(!confirm("သတိပြုရန်: Import လုပ်လိုက်ပါက လက်ရှိဒေတာများအားလုံး ပျက်သွားပြီး import လုပ်သော ဒေတာများဖြင့် အစားထိုးသွားပါမည်။ ဆက်လုပ်ရန် သေချာပါသလား?")) {
-                    event.target.value = ''; // Reset input if cancelled
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    try {
-                        const importedDonations = JSON.parse(e.target.result);
-                        this.donations = importedDonations; // Replace current data
-                        this.saveAndRerender();
-                        alert('Data Import လုပ်ခြင်း အောင်မြင်ပါသည်။');
-                    } catch (error) {
-                        alert('ဖိုင်ဖတ်ရာတွင် အမှားအယွင်းရှိပါသည်။ JSON ဖိုင် ဟုတ်မဟုတ် စစ်ဆေးပါ။');
-                        console.error("Import Error: ", error);
-                    }
-                };
-                reader.readAsText(file);
-                event.target.value = ''; // Reset input after reading
-            },
-
-            openSearchModal() {
-                this.elements.searchResultsContent.innerHTML = '<p>အလှူရှင်အမည် ရိုက်ထည့်ပြီး ရှာဖွေပါ။</p>';
-                document.getElementById('search-input').value = '';
-                this.elements.searchResultsModal.style.display = 'flex';
-            },
-
-            handleSearch(e) {
-                e.preventDefault();
-                const query = document.getElementById('search-input').value.toLowerCase().trim();
-                if (!query) {
-                    this.elements.searchResultsContent.innerHTML = '<p>ရှာဖွေရန် စာလုံး လိုအပ်ပါသည်။</p>';
-                    return;
-                }
-
-                const results = [];
-                for (const key in this.donations) {
-                    const [year, month, day] = key.split('-');
-                    const dateStr = `${parseInt(day) + 1}-${parseInt(month) + 1}-${year}`;
-                    
-                    ['morning', 'day'].forEach(type => {
-                        if (this.donations[key][type] && this.donations[key][type].name.toLowerCase().includes(query)) {
-                            results.push({
-                                date: dateStr,
-                                type: type === 'morning' ? 'အရုဏ်ဆွမ်း' : 'နေ့ဆွမ်း',
-                                ...this.donations[key][type]
-                            });
-                        }
-                    });
-                }
-                
-                let resultsHtml = `<p>"${query}" နှင့် ကိုက်ညီသော အလှူရှင် မတွေ့ပါ။</p>`;
-                if (results.length > 0) {
-                     resultsHtml = `<table class="results-table">
-                                        <thead><tr><th>ရက်စွဲ</th><th>အလှူအမျိုးအစား</th><th>အမည်</th><th>ဖုန်း</th></tr></thead>
-                                        <tbody>${results.map(r => `<tr><td>${r.date}</td><td>${r.type}</td><td>${r.name}</td><td>${r.phone || '-'}</td></tr>`).join('')}</tbody>
-                                   </table>`;
-                }
-                this.elements.searchResultsContent.innerHTML = resultsHtml;
-            }
+            createDayCell(day,month,year,today){const cell=document.createElement('div');cell.className='calendar-cell';const cellDate=new Date(year,month,day);const dateKey=`${year}-${month}-${day}`;cell.dataset.dateKey=dateKey;if(day===today.getDate()&&month===today.getMonth()&&year===today.getFullYear()){cell.classList.add('today')}const dayNumber=document.createElement('div');dayNumber.className='day-number';dayNumber.textContent=day;cell.appendChild(dayNumber);const donationsContainer=document.createElement('div');donationsContainer.className='donations-container';cell.appendChild(donationsContainer);const dateDonations=this.donations[dateKey];if(dateDonations){if(dateDonations.morning)this.renderDonationInCell(donationsContainer,dateDonations.morning,dateKey,'morning');if(dateDonations.day)this.renderDonationInCell(donationsContainer,dateDonations.day,dateKey,'day')}return cell},
+            renderDonationInCell(container,data,dateKey,type){const entry=document.createElement('div');entry.className=`donor-entry donor-${type}`;entry.textContent=data.name;entry.addEventListener('click',e=>{e.stopPropagation();if(this.currentUserRole)this.openDonorModal(type,dateKey,data)});container.appendChild(entry)},
+            changeMonth(offset){this.viewDate.setMonth(this.viewDate.getMonth()+offset);this.renderCalendar()},
+            updateDonationSummary(){let morningCount=0;let dayCount=0;const currentMonth=this.viewDate.getMonth();const currentYear=this.viewDate.getFullYear();for(const key in this.donations){const[year,month]=key.split('-').map(Number);if(year===currentYear&&month===currentMonth){if(this.donations[key].morning)morningCount++;if(this.donations[key].day)dayCount++}}document.getElementById('morning-donations-count').textContent=`အလှူရှင် ${morningCount} ဦး`;document.getElementById('day-donations-count').textContent=`အလှူရှင် ${dayCount} ဦး`;document.querySelector('.no-donations').style.display=morningCount+dayCount>0?'none':'block'},
+            handleCellClick(e){if(!this.currentUserRole)return;const cell=e.target.closest('.calendar-cell.admin-active');if(cell&&!e.target.closest('.donor-entry')){this.currentDateKey=cell.dataset.dateKey;const dateDonations=this.donations[this.currentDateKey]||{};document.getElementById('add-morning-btn').disabled=!!dateDonations.morning;document.getElementById('add-day-btn').disabled=!!dateDonations.day;this.elements.addChoiceModal.style.display='flex'}},
+            openDonorModal(type,dateKey=this.currentDateKey,data={}){this.closeAllModals();document.getElementById('modal-title').textContent=`${data.name?'ပြင်ဆင်ရန်':'အသစ်ထည့်ရန်'} - ${type==='morning'?'အရုဏ်ဆွမ်း':'နေ့ဆွမ်း'}`;const form=document.getElementById('donor-form');form.reset();document.getElementById('donor-date-key').value=dateKey;document.getElementById('donation-type-hidden').value=type;document.getElementById('donor-name').value=data.name||'';document.getElementById('donor-address').value=data.address||'';document.getElementById('donor-phone').value=data.phone||'';document.getElementById('delete-donor-btn').style.display=data.name?'inline-block':'none';this.elements.donorModal.style.display='flex'},
+            handleSaveDonor(e){e.preventDefault();const dateKey=document.getElementById('donor-date-key').value;const type=document.getElementById('donation-type-hidden').value;if(!this.donations[dateKey])this.donations[dateKey]={};this.donations[dateKey][type]={name:document.getElementById('donor-name').value.trim(),address:document.getElementById('donor-address').value.trim(),phone:document.getElementById('donor-phone').value.trim()};this.saveAndRerender();this.closeAllModals()},
+            handleDeleteDonor(){if(confirm('ဤအလှူရှင်စာရင်းကို ဖျက်ရန် သေချာပါသလား?')){const dateKey=document.getElementById('donor-date-key').value;const type=document.getElementById('donation-type-hidden').value;delete this.donations[dateKey][type];if(Object.keys(this.donations[dateKey]).length===0)delete this.donations[dateKey];this.saveAndRerender();this.closeAllModals()}},
+            showDonorListModal(type){const title=`${type==='morning'?'အရုဏ်ဆွမ်း':'နေ့ဆွမ်း'} အလှူရှင်များ (${this.viewDate.toLocaleString('my-MM',{month:'long'})})`;document.getElementById('donor-list-title').textContent=title;const donorList=[];const currentMonth=this.viewDate.getMonth();const currentYear=this.viewDate.getFullYear();for(const key in this.donations){const[year,month,day]=key.split('-').map(Number);if(year===currentYear&&month===currentMonth&&this.donations[key][type]){donorList.push({date:day,...this.donations[key][type]})}}donorList.sort((a,b)=>a.date-b.date);let listHtml=`<p>အလှူရှင် မရှိသေးပါ။</p>`;if(donorList.length>0){listHtml=`<table class="results-table"><thead><tr><th>ရက်စွဲ</th><th>အလှူရှင်အမည်</th></tr></thead><tbody>${donorList.map(d=>`<tr><td>${d.date+1} ရက်</td><td>${d.name}</td></tr>`).join('')}</tbody></table>`}document.getElementById('donor-list-content').innerHTML=listHtml;this.elements.donorListModal.style.display='flex'},
+            closeAllModals(){this.elements.modals.forEach(modal=>modal.style.display='none')},
+            exportData(){if(Object.keys(this.donations).length===0)return alert('Export လုပ်ရန် ဒေတာ မရှိသေးပါ။');const dataStr=JSON.stringify(this.donations,null,2);const blob=new Blob([dataStr],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`donations_backup_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);alert('Data Export လုပ်ခြင်း အောင်မြင်ပါသည်။')},
+            importData(event){const file=event.target.files[0];if(!file)return;if(!confirm("သတိပြုရန်: Import လုပ်လိုက်ပါက လက်ရှိဒေတာများအားလုံး ပျက်သွားပြီး import လုပ်သော ဒေတာများဖြင့် အစားထိုးသွားပါမည်။ ဆက်လုပ်ရန် သေချာပါသလား?")){event.target.value='';return}const reader=new FileReader;reader.onload=e=>{try{const importedDonations=JSON.parse(e.target.result);this.donations=importedDonations;this.saveAndRerender();alert('Data Import လုပ်ခြင်း အောင်မြင်ပါသည်။')}catch(error){alert('ဖိုင်ဖတ်ရာတွင် အမှားအယွင်းရှိပါသည်။ JSON ဖိုင် ဟုတ်မဟုတ် စစ်ဆေးပါ။');console.error("Import Error: ",error)}};reader.readAsText(file);event.target.value=''},
+            openSearchModal(){this.elements.searchResultsModal.querySelector('#search-results-content').innerHTML='<p>အလှူရှင်အမည် ရိုက်ထည့်ပြီး ရှာဖွေပါ။</p>';this.elements.searchResultsModal.querySelector('#search-input').value='';this.elements.searchResultsModal.style.display='flex'},
+            handleSearch(e){e.preventDefault();const query=document.getElementById('search-input').value.toLowerCase().trim();if(!query)return document.getElementById('search-results-content').innerHTML='<p>ရှာဖွေရန် စာလုံး လိုအပ်ပါသည်။</p>';const results=[];for(const key in this.donations){const[year,month,day]=key.split('-');const dateStr=`${parseInt(day)+1}-${parseInt(month)+1}-${year}`;['morning','day'].forEach(type=>{if(this.donations[key][type]&&this.donations[key][type].name.toLowerCase().includes(query)){results.push({date:dateStr,type:type==='morning'?'အရုဏ်ဆွမ်း':'နေ့ဆွမ်း',...this.donations[key][type]})}})}let resultsHtml=`<p>"${query}" နှင့် ကိုက်ညီသော အလှူရှင် မတွေ့ပါ။</p>`;if(results.length>0){resultsHtml=`<table class="results-table"><thead><tr><th>ရက်စွဲ</th><th>အလှူအမျိုးအစား</th><th>အမည်</th><th>ဖုန်း</th></tr></thead><tbody>${results.map(r=>`<tr><td>${r.date}</td><td>${r.type}</td><td>${r.name}</td><td>${r.phone||'-'}</td></tr>`).join('')}</tbody></table>`}document.getElementById('search-results-content').innerHTML=resultsHtml}
         };
 
         App.init();
